@@ -1,5 +1,7 @@
 # WIP
 
+[![Join the chat at https://gitter.im/lambdabricks/bricks-front-react](https://badges.gitter.im/lambdabricks/bricks-front-react.svg)](https://gitter.im/lambdabricks/bricks-front-react?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 # Lambda Blocks
 
 TODO: Add screenshot
