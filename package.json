@@ -31,9 +31,11 @@
     "babelify": "~6.1.2",
     "browserify": "~10.2.4",
     "http-server": "^0.8.5",
+    "standard": "6.0.8",
     "watchify": "^3.3.1"
   },
   "scripts": {
-    "start": "watchify --extension=js -o dist/app.js src/index.js & http-server dist"
+    "start": "watchify --extension=js -o dist/app.js src/index.js & http-server dist",
+    "lint": "standard > log/linting.log"
   }
 }

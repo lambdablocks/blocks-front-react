@@ -1,3 +1,15 @@
-node_modules/
-npm-debug.log
+# modules and dependencies
+node_modules
+
+# logs (duh!)
+log
+*.log
+
+# auto-save files (gedit)
+*~
+
+# auto-save files (vim)
+*.swp
+
+# main file (compiled)
 dist/app.js

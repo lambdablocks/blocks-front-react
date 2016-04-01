@@ -80,8 +80,8 @@ export const selectElementOrStopDrag = (mousePosition) => {
 
     dispatch(stopDrag())
 
-    if(element.mouseDownPosition.x == mousePosition.x &&
-      element.mouseDownPosition.y == mousePosition.y ) {
+    if (element.mouseDownPosition.x === mousePosition.x &&
+      element.mouseDownPosition.y === mousePosition.y) {
       dispatch(selectElement(element.id, mousePosition))
     } else {
       dispatch(removeSelectedElement())
@@ -129,7 +129,7 @@ export const addPipeIfBothSlotsSelected = () => {
     const { workspace } = getState()
     const { input, output } = workspace.selectionState.pipe
 
-    if(isNotEmpty(input) && isNotEmpty(output)) {
+    if (isNotEmpty(input) && isNotEmpty(output)) {
       dispatch(_addPipe(input, output))
       dispatch(_clearSlotSelection())
       dispatch(_linkSlots(input, output))
@@ -142,7 +142,7 @@ const _evalAllWorkspacesIfNeeded = (elementId) => {
   return (dispatch, getState) => {
     const { workspace } = getState()
 
-    if(_shouldEval(elementId, workspace)) {
+    if (_shouldEval(elementId, workspace)) {
       return dispatch(_evalWorkspaces(elementId))
     }
   }
@@ -151,7 +151,7 @@ const _evalAllWorkspacesIfNeeded = (elementId) => {
 const _shouldEval = (elementId, workspace) => {
   const element = workspace.entities[elementId]
 
-  if(element.componentName != BRICK) {
+  if (element.componentName !== BRICK) {
     return false
   }
 
@@ -212,22 +212,22 @@ export const removeElement = (elementId) => {
     const { workspace } = getState()
     const element = workspace.entities[elementId]
 
-    if(element.componentName == SELECTABLE_PIPE) {
+    if (element.componentName === SELECTABLE_PIPE) {
       dispatch(_unlinkSlots(element))
     }
 
-    if(element.componentName == BRICK) {
+    if (element.componentName === BRICK) {
       Object.keys(element.inputSlots).forEach((slotId) => {
         const slot = element.inputSlots[slotId]
 
-        if(slot.value) {
+        if (slot.value) {
           dispatch(
             _unlinkSlots({
               input: slot.value,
               output: {
                 elementId: element.id,
                 slotId: slot.id
-              },
+              }
             })
           )
         }
@@ -337,7 +337,7 @@ export const changeTestNodeValue = (elementId, newValue, workspaceIndex) => {
 
     dispatch(_changeTestNodeValue(testNode, newValue, workspaceIndex))
 
-    if(testNode.outputSlots){
+    if (testNode.outputSlots) {
       const { outputElementIds } = testNode.outputSlots[elementId]
 
       unique(outputElementIds).forEach((outputElementId) =>

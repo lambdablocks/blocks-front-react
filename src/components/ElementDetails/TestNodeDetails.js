@@ -12,7 +12,7 @@ const styles = {
 }
 
 export default class TestNodeDetails extends Component {
-  render() {
+  render () {
     const {
       changeTestNodeType,
       changeTestNodeValue,
@@ -24,22 +24,22 @@ export default class TestNodeDetails extends Component {
     } = this.props
 
     return (
-      <div style={ styles} >
+      <div style={styles} >
         <TypesSelect
-          handleChange={ changeTestNodeType }
-          id={ id }
-          primitives={ primitives }
-          type={ type }
-          workspaceIndex={ workspaceIndex }
+          handleChange={changeTestNodeType}
+          id={id}
+          primitives={primitives}
+          type={type}
+          workspaceIndex={workspaceIndex}
         />
-        { type != "null" &&
+        {type !== 'null' &&
           <CustomValueInput
-            handleChange={ changeTestNodeValue }
-            id={ id }
-            primitives={ primitives }
-            type={ type }
-            value={ value }
-            workspaceIndex={ workspaceIndex }
+            handleChange={changeTestNodeValue}
+            id={id}
+            primitives={primitives}
+            type={type}
+            value={value}
+            workspaceIndex={workspaceIndex}
           />
         }
       </div>
