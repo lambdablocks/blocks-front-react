@@ -8,7 +8,7 @@ import CustomValueInput from './CustomValueInput'
 import DialogButton from './DialogButton'
 
 export default class PrimitiveDetails extends Component {
-  render() {
+  render () {
     const {
       changePrimitiveValue,
       deleteElement,
@@ -22,16 +22,16 @@ export default class PrimitiveDetails extends Component {
     return (
       <div>
         <CustomValueInput
-          handleChange={ changePrimitiveValue }
-          id={ id }
-          primitives={ primitives }
-          type={ type }
-          value={ value }
-          workspaceIndex={ workspaceIndex }
+          handleChange={changePrimitiveValue}
+          id={id}
+          primitives={primitives}
+          type={type}
+          value={value}
+          workspaceIndex={workspaceIndex}
         />
         <DialogButton
-          onClick={ () => deleteElement(id) }
-          message="delete"
+          onClick={() => deleteElement(id)}
+          message='delete'
         />
       </div>
     )

@@ -14,19 +14,19 @@ import {
 import { ERROR } from '../utils/evalUtils'
 
 class Brick extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.startDrag = this.startDrag.bind(this)
   }
 
-  startDrag(mouseEvent) {
+  startDrag (mouseEvent) {
     const { handleMouseDown, id, position } = this.props
 
     handleMouseDown(id, mouseEvent, position)
   }
 
-  render() {
+  render () {
     const {
       componentName,
       environment,
@@ -43,33 +43,34 @@ class Brick extends Component {
 
     return (
       <Group
-        onMouseDown={ this.startDrag }
-        y={ slotHeight }
+        onMouseDown={this.startDrag}
+        y={slotHeight}
       >
         <Rectangle
-          height={ size.height }
-          width={ size.width }
-          stroke={ getConstant(componentName, 'strokeColor') }
-          fill={ getConstant(componentName, 'fillColor') }
+          height={size.height}
+          width={size.width}
+          stroke={getConstant(componentName, 'strokeColor')}
+          fill={getConstant(componentName, 'fillColor')}
         />
         <Text
-          fill={ getConstant(componentName, 'textColor') }
-          font={ getConstant(componentName, 'font') }
-          y={ midHeight }
+          fill={getConstant(componentName, 'textColor')}
+          font={getConstant(componentName, 'font')}
+          y={midHeight}
         >
-          { name }
+          {name}
         </Text>
-        { outputElementIds.length == 0 && environment.type &&
+        {outputElementIds.length === 0 && environment.type &&
           <Text
-            fill={ environment.type === ERROR ?
-              getConstant(componentName, 'textErrorColor') :
-              getConstant(componentName, 'textColor')
+            fill={
+              environment.type === ERROR
+              ? getConstant(componentName, 'textErrorColor')
+              : getConstant(componentName, 'textColor')
             }
-            font={ getConstant(componentName, 'font') }
-            x={ ((size.width - slotWidth) / 2) + slotWidth }
-            y={ size.height }
+            font={getConstant(componentName, 'font')}
+            x={((size.width - slotWidth) / 2) + slotWidth}
+            y={size.height}
           >
-            { environment.value }
+            {environment.value}
           </Text>
         }
       </Group>

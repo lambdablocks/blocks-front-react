@@ -6,13 +6,13 @@ export const INVALIDATE_LIBRARY = 'INVALIDATE_LIBRARY'
 
 export const invalidateLibrary = () => {
   return {
-    type: INVALIDATE_LIBRARY,
+    type: INVALIDATE_LIBRARY
   }
 }
 
 const requestLibrary = () => {
   return {
-    type: REQUEST_LIBRARY,
+    type: REQUEST_LIBRARY
   }
 }
 
@@ -26,11 +26,11 @@ const receiveLibrary = (items) => {
 }
 
 const fetchLibrary = () => {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(requestLibrary())
-    return fetch(`http://demo5895613.mockable.io/library/js/2`)
-      .then(response => response.json())
-      .then(items => dispatch(receiveLibrary(items)))
+    return fetch('http://demo5895613.mockable.io/library/js/2')
+      .then((response) => response.json())
+      .then((items) => dispatch(receiveLibrary(items)))
   }
 }
 

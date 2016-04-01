@@ -1,5 +1,7 @@
 # WIP
 
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+
 # Lambda Bricks
 
 What will happen if we separate a programming language in front-end and back-end?

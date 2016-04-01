@@ -3,7 +3,7 @@ import React, { PropTypes, Component } from 'react'
 import Translate from '../Translate'
 
 export default class DialogButton extends Component {
-  render() {
+  render () {
     const {
       message,
       onClick
@@ -11,9 +11,9 @@ export default class DialogButton extends Component {
 
     return (
       <Translate
-        childProps={ { onClick } }
-        HtmlElement="button"
-        message={ message }
+        childProps={{onClick}}
+        HtmlElement='button'
+        message={message}
       />
     )
   }
