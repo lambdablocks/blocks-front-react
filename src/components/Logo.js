@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 
-export default class Logo extends Component {
-  render() {
+const Logo = React.createClass({
+  render () {
     return (
       <div id="logo">
         <svg className="brick">
@@ -16,4 +16,6 @@ export default class Logo extends Component {
       </div>
     )
   }
-}
+})
+
+export default Logo

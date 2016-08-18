@@ -3,8 +3,13 @@ import { Path, Shape } from 'react-art'
 
 import { SizePropTypes } from '../propTypes'
 
-class Ellipse extends Component {
-  render() {
+const Ellipse = React.createClass({
+  propTypes: {
+    fillColor: PropTypes.string.isRequired,
+    size: SizePropTypes.isRequired
+  },
+
+  render () {
     const {
       fillColor,
       size
@@ -27,11 +32,6 @@ class Ellipse extends Component {
       />
     )
   }
-}
-
-Ellipse.propTypes = {
-  fillColor: PropTypes.string.isRequired,
-  size: SizePropTypes.isRequired
-}
+})
 
 export default Ellipse

@@ -8,8 +8,21 @@ import { PositionPropTypes, SizePropTypes, SlotPropTypes } from '../propTypes'
 import SlotGroup from './SlotGroup'
 
 export default function composeBrick(InnerComponent) {
-  class AbstractBrick extends Component {
-    render() {
+  const AbstractBrick = React.createClass({
+    propTypes: {
+      componentName: PropTypes.string.isRequired,
+      inputSlots: SlotPropTypes.isRequired,
+      outputSlots: SlotPropTypes.isRequired,
+      position: PositionPropTypes.isRequired,
+      selectBrickInputSlot: PropTypes.func.isRequired,
+      selectBrickOutputSlot: PropTypes.func.isRequired,
+      selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
+      size: SizePropTypes.isRequired
+    },
+
+    displayName: InnerComponent.name,
+
+    render () {
       const {
         componentName,
         id,
@@ -47,20 +60,7 @@ export default function composeBrick(InnerComponent) {
         </Group>
       )
     }
-  }
-
-  AbstractBrick.propTypes = {
-    componentName: PropTypes.string.isRequired,
-    inputSlots: SlotPropTypes.isRequired,
-    outputSlots: SlotPropTypes.isRequired,
-    position: PositionPropTypes.isRequired,
-    selectBrickInputSlot: PropTypes.func.isRequired,
-    selectBrickOutputSlot: PropTypes.func.isRequired,
-    selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
-    size: SizePropTypes.isRequired
-  }
-
-  AbstractBrick.displayName = InnerComponent.name
+  })
 
   return AbstractBrick
 }

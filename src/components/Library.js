@@ -4,13 +4,25 @@ import Module from './Module'
 import { PrimitivePropTypes } from '../propTypes'
 import Translate from './Translate'
 
-export default class Library extends Component {
-  componentDidMount() {
+const Library = React.createClass({
+  propTypes: {
+    fetchLibrary: PropTypes.func.isRequired,
+    id: PropTypes.string.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    items: PropTypes.shape({
+      modules: PropTypes.array,
+      primitives: PropTypes.objectOf(PrimitivePropTypes)
+    }).isRequired,
+    onFunctionClick: PropTypes.func.isRequired,
+    onPrimitiveClick: PropTypes.func.isRequired
+  },
+
+  componentDidMount () {
     const { fetchLibrary, id } = this.props
     fetchLibrary(id)
-  }
+  },
 
-  render() {
+  render () {
     const {
       isFetching,
       items,
@@ -71,16 +83,6 @@ export default class Library extends Component {
       </aside>
     )
   }
-}
+})
 
-Library.propTypes = {
-  fetchLibrary: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
-  isFetching: PropTypes.bool.isRequired,
-  items: PropTypes.shape({
-    modules: PropTypes.array,
-    primitives: PropTypes.objectOf(PrimitivePropTypes)
-  }).isRequired,
-  onFunctionClick: PropTypes.func.isRequired,
-  onPrimitiveClick: PropTypes.func.isRequired
-}
+export default Library;
