@@ -9,7 +9,7 @@ import Ellipse from './Ellipse'
 import Slot from './Slot'
 
 const Primitive = React.createClass({
-  startDrag(mouseEvent) {
+  startDrag (mouseEvent) {
     const { handleMouseDown, id, position } = this.props
 
     handleMouseDown(id, mouseEvent, position)
@@ -34,41 +34,41 @@ const Primitive = React.createClass({
       position,
       selectedSlots,
       selectSlot,
-      size,
+      size
     } = this.props
 
     const fillColor = getFillColor(binding.type, binding.value)
     const slotPosition = centeredSlotPosition(size, componentName)
 
     return (
-      <Group x={ position.x } y={ position.y } >
+      <Group x={position.x} y={position.y} >
         <Group
-          onMouseDown={ this.startDrag }
+          onMouseDown={this.startDrag}
         >
           <Ellipse
-            fillColor={ fillColor }
-            size={ size }
+            fillColor={fillColor}
+            size={size}
           />
           <Text
-            alignment={ getConstant(componentName, 'alignment') }
-            fill={ getConstant(componentName, 'textColor') }
-            font={ getConstant(componentName, 'font') }
-            x={ size.width / 2 }
-            y={ size.height / 2 - 5 }
+            alignment={getConstant(componentName, 'alignment')}
+            fill={getConstant(componentName, 'textColor')}
+            font={getConstant(componentName, 'font')}
+            x={size.width / 2}
+            y={size.height / 2 - 5}
           >
-            { binding.value === undefined ? "<NONE>" : binding.value }
+            {binding.value === undefined ? '<NONE>' : binding.value}
           </Text>
         </Group>
         <Slot
-          key={ id }
-          fillColor={ fillColor }
-          id={ id }
-          parentId={ id }
-          selectedSlots={ selectedSlots }
-          selectSlot={ selectSlot }
-          strokeColor={ fillColor }
-          x={ slotPosition.x }
-          y={ slotPosition.y }
+          key={id}
+          fillColor={fillColor}
+          id={id}
+          parentId={id}
+          selectedSlots={selectedSlots}
+          selectSlot={selectSlot}
+          strokeColor={fillColor}
+          x={slotPosition.x}
+          y={slotPosition.y}
         />
       </Group>
     )

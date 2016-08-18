@@ -93,7 +93,7 @@ const translations = {
 <p>We are near the end of the tutorial there is just one more step.</p>\
 <p>When you finish doing some of the exercises click the button <b>Next</b>.</p>",
     'tutorialSteps.5':
-"<p>Imagine we have a program that needs to calculate a lot of averages.\
+'<p>Imagine we have a program that needs to calculate a lot of averages.\
  It will be really boring to do all the connections every time.\
  Luckily there is a way to avoid this. We can create our own functions!</p>\
 <p>The functions that we create are exactly the same as the functions we have used\
@@ -111,7 +111,7 @@ const translations = {
  you want. You can call your function by giving values to the constants that are\
  outside of it.</p>\
 <p>This is the end of this really short tutorial on the basics of programming.\
- Hope you find it useful as a first step in your path to learn to program.</p>"
+ Hope you find it useful as a first step in your path to learn to program.</p>'
   }
 }
 

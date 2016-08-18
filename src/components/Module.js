@@ -26,20 +26,20 @@ const Module = React.createClass({
     return (
       <div>
         <h4>
-          { label }
+          {label}
         </h4>
         <ul>
-          { functions.map((libraryFunction) => {
-              return (
+          {functions.map((libraryFunction) => {
+            return (
                 <li
-                  key={ libraryFunction.id }
-                  onClick={ () => onFunctionClick(name, libraryFunction) }
-                  title={ libraryFunction.title }
+                  key={libraryFunction.id}
+                  onClick={() => onFunctionClick(name, libraryFunction)}
+                  title={libraryFunction.title}
                 >
-                  { libraryFunction.label }
+                  {libraryFunction.label}
                 </li>
               )
-            }
+          }
           )}
         </ul>
       </div>

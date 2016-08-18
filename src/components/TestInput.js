@@ -46,28 +46,28 @@ const TestInput = React.createClass({
 
     return (
       <Group
-        onClick={ (e) => handleClick(id, e, workspaceIndex) }
-        x={ position.x }
-        y={ position.y }
+        onClick={(e) => handleClick(id, e, workspaceIndex)}
+        x={position.x}
+        y={position.y}
       >
         <Ellipse
-          fillColor={ fillColor }
-          size={ size }
+          fillColor={fillColor}
+          size={size}
         />
         <Text
-          alignment={ getConstant(componentName, 'alignment') }
-          fill={ getConstant(componentName, 'textColor') }
-          font={ getConstant(componentName, 'font') }
-          x={ size.width / 2 }
-          y={ size.height / 2 - 5 }
+          alignment={getConstant(componentName, 'alignment')}
+          fill={getConstant(componentName, 'textColor')}
+          font={getConstant(componentName, 'font')}
+          x={size.width / 2}
+          y={size.height / 2 - 5}
         >
-          { binding.value === undefined ? "<NONE>" : binding.value }
+          {binding.value === undefined ? '<NONE>' : binding.value}
         </Text>
         <Pipe
-          fillColor={ fillColor }
-          inputPosition={ inputPipePosition }
-          outputPosition={ outputPipePosition }
-          strokeColor={ fillColor }
+          fillColor={fillColor}
+          inputPosition={inputPipePosition}
+          outputPosition={outputPipePosition}
+          strokeColor={fillColor}
         />
       </Group>
     )

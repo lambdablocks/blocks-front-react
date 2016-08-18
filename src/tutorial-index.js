@@ -14,7 +14,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Tutorial
       locale='en'
-      step={ step }
+      step={step}
     />
   </Provider>,
   document.getElementById('main')

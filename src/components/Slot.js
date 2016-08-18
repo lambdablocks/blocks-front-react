@@ -36,15 +36,15 @@ const Slot = React.createClass({
 
     return (
       <Rectangle
-        key={ id }
-        height={ getConstant(componentName, 'height') }
-        width={ getConstant(componentName, 'width') }
-        x={ x }
-        y={ y }
-        onClick={ () => selectSlot(parentId, id) }
-        cursor={ getConstant(componentName, 'cursor') }
-        fill={ fillColor }
-        stroke={ strokeColor }
+        key={id}
+        height={getConstant(componentName, 'height')}
+        width={getConstant(componentName, 'width')}
+        x={x}
+        y={y}
+        onClick={() => selectSlot(parentId, id)}
+        cursor={getConstant(componentName, 'cursor')}
+        fill={fillColor}
+        stroke={strokeColor}
       />
     )
   }

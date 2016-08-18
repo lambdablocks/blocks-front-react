@@ -7,7 +7,7 @@ export const PENDING = 'pending'
 export const getTestResult = (mainBrick, unitTest) => {
   const testOutputId = mainBrick.testOutputIds[0]
 
-  if(!testOutputId) {
+  if (!testOutputId) {
     return PENDING
   }
 
@@ -15,10 +15,10 @@ export const getTestResult = (mainBrick, unitTest) => {
   const value = unitTest.values[brickValue && brickValue.slotId]
   const testOutput = unitTest.values[testOutputId]
 
-  if(value && value.type && value.value &&
+  if (value && value.type && value.value &&
      testOutput && testOutput.type && testOutput.value
   ) {
-    if(value.type == testOutput.type && value.value == testOutput.value) {
+    if (value.type == testOutput.type && value.value == testOutput.value) {
       return PASSING
     } else {
       return FAILING

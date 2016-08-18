@@ -11,7 +11,7 @@ export const isNotEmpty = (object) => {
 
 export const handleSelectElement = (dispatch) => {
   return (elementId, mouseEvent, workspaceIndex) => {
-    if(mouseEvent.button != LEFT)
+    if (mouseEvent.button != LEFT)
       return
 
     dispatch(
@@ -32,10 +32,10 @@ export const unique = (array) => {
 }
 
 export const bound = (value, lowerLimit, upperLimit) => {
-  if(value < lowerLimit) {
+  if (value < lowerLimit) {
     return lowerLimit
   }
-  if(value > upperLimit) {
+  if (value > upperLimit) {
     return upperLimit
   }
 

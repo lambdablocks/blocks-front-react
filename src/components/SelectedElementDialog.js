@@ -38,22 +38,20 @@ const SelectedElementDialog = React.createClass({
 
     return (
       <div
-        className="SelectedElementDialog"
-        style={
-          {
-            left: mousePosition.x,
-            top: mousePosition.y
-          }
-        }
+        className='SelectedElementDialog'
+        style={{
+          left: mousePosition.x,
+          top: mousePosition.y
+        }}
       >
         <a
-          className="closeBtn"
-          href="#"
-          onClick={ closeDialog }
+          className='closeBtn'
+          href='#'
+          onClick={closeDialog}
         >
           x
         </a>
-        <ReactComponent { ...this.props } />
+        <ReactComponent {...this.props} />
       </div>
     )
   }

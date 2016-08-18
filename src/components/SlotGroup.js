@@ -18,7 +18,7 @@ const SlotGroup = React.createClass({
     y: PropTypes.number.isRequired
   },
 
-  render() {
+  render () {
     const {
       componentName,
       parentId,
@@ -36,31 +36,31 @@ const SlotGroup = React.createClass({
     const xOffset = (parentWidth - width) / 2
 
     return (
-      <Group x={ xOffset } y={ y }>
-        { Object.keys(slots).map((slotId, index) => {
-            const slot = slots[slotId]
-            const x = slotOffset + (slot.index * slotAndOffset)
+      <Group x={xOffset} y={y}>
+        {Object.keys(slots).map((slotId, index) => {
+          const slot = slots[slotId]
+          const x = slotOffset + (slot.index * slotAndOffset)
 
-            return (
+          return (
               <Slot
-                key={ slot.id }
-                fillColor={ getConstant(componentName, 'fillColor') }
-                id={ slot.id }
-                parentId={ parentId }
-                selectedSlots={ selectedSlots }
-                selectSlot={ selectSlot }
-                strokeColor={ getConstant(componentName, 'strokeColor') }
-                x={ x }
-                y={ 0 }
+                key={slot.id}
+                fillColor={getConstant(componentName, 'fillColor')}
+                id={slot.id}
+                parentId={parentId}
+                selectedSlots={selectedSlots}
+                selectSlot={selectSlot}
+                strokeColor={getConstant(componentName, 'strokeColor')}
+                x={x}
+                y={0}
               />
             )
-          })
+        })
         }
       </Group>
     )
   },
 
-  slotGroupWidth(slots, slotOffset, slotAndOffset) {
+  slotGroupWidth (slots, slotOffset, slotAndOffset) {
     const totalSlots = Object.keys(slots).length
 
     return slotOffset + (totalSlots * slotAndOffset)

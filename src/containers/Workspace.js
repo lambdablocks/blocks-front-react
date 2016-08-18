@@ -28,7 +28,7 @@ const mapStateToProps = (state) => {
 
   let selectedElement = {}
 
-  if(!selectionState.dragStarted)
+  if (!selectionState.dragStarted)
     selectedElement = selectionState.element
 
   return {
@@ -38,7 +38,7 @@ const mapStateToProps = (state) => {
       inner: mainBrick.innerIds.map((elementId) => {
         const element = entities[elementId]
 
-        if(element.componentName == SELECTABLE_PIPE) {
+        if (element.componentName == SELECTABLE_PIPE) {
           return {
             ...element,
             inputPosition: inputSlotPosition(

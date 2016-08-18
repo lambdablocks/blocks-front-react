@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 import { Path, Shape } from 'react-art'
 
 import { SizePropTypes } from '../propTypes'
@@ -26,9 +26,9 @@ const Ellipse = React.createClass({
 
     return (
       <Shape
-        fill={ fillColor }
-        d={ path }
-        stroke={ fillColor }
+        fill={fillColor}
+        d={path}
+        stroke={fillColor}
       />
     )
   }

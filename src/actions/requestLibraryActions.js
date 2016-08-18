@@ -6,13 +6,13 @@ export const INVALIDATE_LIBRARY = 'INVALIDATE_LIBRARY'
 
 export const invalidateLibrary = () => {
   return {
-    type: INVALIDATE_LIBRARY,
+    type: INVALIDATE_LIBRARY
   }
 }
 
 const requestLibrary = () => {
   return {
-    type: REQUEST_LIBRARY,
+    type: REQUEST_LIBRARY
   }
 }
 

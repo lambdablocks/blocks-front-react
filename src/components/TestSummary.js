@@ -35,16 +35,14 @@ const TestSummary = React.createClass({
     } = this.props
 
     return (
-      <ul style={ ulStyles } >
-        { unitTests.map((unitTest, index) =>
+      <ul style={ulStyles} >
+        {unitTests.map((unitTest, index) =>
           <li
-            key={ index }
-            style={
-              {
-                ...liStyles,
-                backgroundColor: getTestResultColor(unitTest)
-              }
-            }
+            key={index}
+            style={{
+              ...liStyles,
+              backgroundColor: getTestResultColor(unitTest)
+            }}
           ></li>
         )}
       </ul>

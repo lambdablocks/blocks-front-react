@@ -31,50 +31,50 @@ const Library = React.createClass({
     } = this.props
 
     return (
-      <aside id="library">
+      <aside id='library'>
         <Translate
-          HtmlElement="h2"
-          message="library"
+          HtmlElement='h2'
+          message='library'
         />
-        { isFetching &&
+        {isFetching &&
           <Translate
-            HtmlElement="h3"
-            message="loading"
+            HtmlElement='h3'
+            message='loading'
           />
         }
-        { !isFetching && items.primitives &&
-          <div className="nav">
-            <div id="constants">
+        {!isFetching && items.primitives &&
+          <div className='nav'>
+            <div id='constants'>
               <Translate
-                HtmlElement="h3"
-                message="constants"
+                HtmlElement='h3'
+                message='constants'
               />
               <ul>
-                { Object.keys(items.primitives).map((key) => {
-                    const primitive = items.primitives[key]
+                {Object.keys(items.primitives).map((key) => {
+                  const primitive = items.primitives[key]
 
-                    return (
+                  return (
                       <li
-                        key={ primitive.id }
-                        onClick={ () => onPrimitiveClick(primitive.type) }
+                        key={primitive.id}
+                        onClick={() => onPrimitiveClick(primitive.type)}
                       >
                         {primitive.label}
                       </li>
                     )
-                  }
+                }
                 )}
               </ul>
             </div>
-            <div id="functions">
+            <div id='functions'>
               <Translate
-                HtmlElement="h3"
-                message="functions"
+                HtmlElement='h3'
+                message='functions'
               />
-              { items.modules.map((module) =>
+              {items.modules.map((module) =>
                 <Module
-                  key={ module.name }
-                  onFunctionClick={ onFunctionClick }
-                  { ...module }
+                  key={module.name}
+                  onFunctionClick={onFunctionClick}
+                  {...module}
                 />
               )}
             </div>
@@ -85,4 +85,4 @@ const Library = React.createClass({
   }
 })
 
-export default Library;
+export default Library

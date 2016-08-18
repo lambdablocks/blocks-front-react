@@ -1,13 +1,12 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 import { Group } from 'react-art'
-import Rectangle from 'react-art/lib/Rectangle.art'
 
 import { getConstant } from './constants'
 import { PositionPropTypes, SizePropTypes, SlotPropTypes } from '../propTypes'
 
 import SlotGroup from './SlotGroup'
 
-export default function composeBrick(InnerComponent) {
+export default function composeBrick (InnerComponent) {
   const AbstractBrick = React.createClass({
     propTypes: {
       componentName: PropTypes.string.isRequired,
@@ -37,25 +36,25 @@ export default function composeBrick(InnerComponent) {
       const slotHeight = getConstant(componentName, 'slotHeight')
 
       return (
-        <Group x={ position.x } y={ position.y }>
-          <InnerComponent { ...this.props } />
+        <Group x={position.x} y={position.y}>
+          <InnerComponent {...this.props} />
           <SlotGroup
-            componentName={ componentName }
-            parentId={ id }
-            parentWidth={ size.width }
-            selectedSlots={ selectedSlots }
-            selectSlot={ selectBrickInputSlot }
-            slots={ inputSlots }
-            y={ 0 }
+            componentName={componentName}
+            parentId={id}
+            parentWidth={size.width}
+            selectedSlots={selectedSlots}
+            selectSlot={selectBrickInputSlot}
+            slots={inputSlots}
+            y={0}
           />
           <SlotGroup
-            componentName={ componentName }
-            parentId={ id }
-            parentWidth={ size.width }
-            selectedSlots={ selectedSlots }
-            selectSlot={ selectBrickOutputSlot }
-            slots={ outputSlots }
-            y={ size.height + slotHeight }
+            componentName={componentName}
+            parentId={id}
+            parentWidth={size.width}
+            selectedSlots={selectedSlots}
+            selectSlot={selectBrickOutputSlot}
+            slots={outputSlots}
+            y={size.height + slotHeight}
           />
         </Group>
       )

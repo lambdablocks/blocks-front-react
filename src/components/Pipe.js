@@ -39,9 +39,9 @@ const Pipe = React.createClass({
 
     return (
       <Shape
-        d={ path }
-        fill={ fillColor }
-        stroke={ strokeColor }
+        d={path}
+        fill={fillColor}
+        stroke={strokeColor}
       />
     )
   }

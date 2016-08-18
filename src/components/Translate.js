@@ -22,8 +22,8 @@ const Translate = React.createClass({
     const { locale } = this.context
 
     return (
-      <HtmlElement { ...childProps } >
-        { getMessage(locale, message) }
+      <HtmlElement {...childProps} >
+        {getMessage(locale, message)}
       </HtmlElement>
     )
   }

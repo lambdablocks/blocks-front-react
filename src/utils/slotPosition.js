@@ -10,7 +10,7 @@ export const inputSlotPosition = (element, slotId) => {
   const { componentName, position, size } = element
   const slotHeight = getConstant(componentName, 'slotHeight')
 
-  switch(componentName) {
+  switch (componentName) {
     case BRICK:
       const { outputSlots } = element
 
@@ -39,7 +39,7 @@ export const inputSlotPosition = (element, slotId) => {
 export const outputSlotPosition = (element, slotId) => {
   const { componentName, position, size } = element
 
-  switch(componentName) {
+  switch (componentName) {
     case BRICK:
       const { inputSlots } = element
       return {

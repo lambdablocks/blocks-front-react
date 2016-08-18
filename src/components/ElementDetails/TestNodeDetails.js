@@ -8,7 +8,7 @@ import CustomValueInput from './CustomValueInput'
 import TypesSelect from './TypesSelect'
 
 export default class TestNodeDetails extends Component {
-  render() {
+  render () {
     const {
       changeTestNodeType,
       changeTestNodeValue,
@@ -23,22 +23,22 @@ export default class TestNodeDetails extends Component {
     return (
       <div>
         <TypesSelect
-          handleChange={ changeTestNodeType }
-          id={ id }
-          primitives={ primitives }
-          type={ type }
-          workspaceIndex={ workspaceIndex }
+          handleChange={changeTestNodeType}
+          id={id}
+          primitives={primitives}
+          type={type}
+          workspaceIndex={workspaceIndex}
         />
-        { type != "null" &&
-          <div className="topMargin">
+        {type != 'null' &&
+          <div className='topMargin'>
             <CustomValueInput
-              closeDialog={ closeDialog }
-              handleChange={ changeTestNodeValue }
-              id={ id }
-              primitives={ primitives }
-              type={ type }
-              value={ value }
-              workspaceIndex={ workspaceIndex }
+              closeDialog={closeDialog}
+              handleChange={changeTestNodeValue}
+              id={id}
+              primitives={primitives}
+              type={type}
+              value={value}
+              workspaceIndex={workspaceIndex}
             />
           </div>
         }

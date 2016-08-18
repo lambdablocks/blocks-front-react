@@ -30,11 +30,11 @@ const TestResult = React.createClass({
 
     return (
       <Rectangle
-        fill={ getTestResultColor(unitTest) }
-        height={ mainBrick.size.height + (delta * 2) }
-        x={ mainBrick.position.x - delta }
-        y={ mainBrick.position.y - delta + slotHeight }
-        width={ mainBrick.size.width + (delta * 2) }
+        fill={getTestResultColor(unitTest)}
+        height={mainBrick.size.height + (delta * 2)}
+        x={mainBrick.position.x - delta}
+        y={mainBrick.position.y - delta + slotHeight}
+        width={mainBrick.size.width + (delta * 2)}
       />
     )
   }
