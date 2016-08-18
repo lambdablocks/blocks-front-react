@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 import ReactDOM from 'react-dom'
 
 import {
@@ -8,27 +8,30 @@ import {
 import { colors } from '../constants'
 import Translate from '../Translate'
 
-export default class CustomValueInput extends Component {
-  constructor(props) {
-    super(props)
+const CustomValueInput = React.createClass({
+  propTypes: {
+    closeDialog: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired,
+    primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,
+    type: PropTypes.string.isRequired,
+    value: PropTypes.string,
+    workspaceIndex: PropTypes.number
+  },
 
-    this.closeOnEnterKeyDown = this.closeOnEnterKeyDown.bind(this)
-    this.customInput = this.customInput.bind(this)
-  }
-
-  componentDidMount() {
-    if(this.refs.valueInput) {
+  componentDidMount () {
+    if (this.refs.valueInput) {
       ReactDOM.findDOMNode(this.refs.valueInput).focus()
     }
-  }
+  },
 
-  closeOnEnterKeyDown(e) {
-    if(e.key == 'Enter') {
+  closeOnEnterKeyDown (e) {
+    if (e.key === 'Enter') {
       this.props.closeDialog()
     }
-  }
+  },
 
-  customInput() {
+  customInput () {
     const {
       handleChange,
       id,
@@ -39,63 +42,55 @@ export default class CustomValueInput extends Component {
     } = this.props
     const primitive = primitives[type]
 
-    if(primitive && primitive.values) {
+    if (primitive && primitive.values) {
       return (
-        <span id="CustomValueInput">
-          { primitive.values.map((primitiveValue) =>
-            <span key={ primitiveValue.name }>
+        <span id='CustomValueInput'>
+          {primitive.values.map((primitiveValue) =>
+            <span key={primitiveValue.name}>
               <input
-                onChange={ (e) => handleChange(id, e, workspaceIndex) }
-                id={ primitiveValue.name }
-                name="inputWithOptions"
-                type="radio"
-                value={ primitiveValue.name }
-                checked={ primitiveValue.name == value }
+                onChange={(e) => handleChange(id, e, workspaceIndex)}
+                id={primitiveValue.name}
+                name='inputWithOptions'
+                type='radio'
+                value={primitiveValue.name}
+                checked={primitiveValue.name === value}
               />
               <label
-                htmlFor={ primitiveValue.name }
-                style={ { backgroundColor: colors[primitiveValue.name] } }
+                htmlFor={primitiveValue.name}
+                style={{ backgroundColor: colors[primitiveValue.name] }}
               >
-                { primitiveValue.label }
+                {primitiveValue.label}
               </label>
             </span>
           )}
         </span>
       )
     } else {
-      const inputType = type == "number" ? type : "text"
+      const inputType = type === 'number' ? type : 'text'
 
       return (
         <input
-          onChange={ (e) => handleChange(id, e, workspaceIndex) }
-          onKeyDown={ this.closeOnEnterKeyDown }
-          ref="valueInput"
-          type={ inputType }
-          value={ value }
+          onChange={(e) => handleChange(id, e, workspaceIndex)}
+          onKeyDown={this.closeOnEnterKeyDown}
+          ref='valueInput'
+          type={inputType}
+          value={value}
         />
       )
     }
-  }
+  },
 
-  render() {
+  render () {
     return (
       <div>
         <Translate
-          HtmlElement="label"
-          message="value"
+          HtmlElement='label'
+          message='value'
         />
-        { this.customInput() }
+        {this.customInput()}
       </div>
     )
   }
-}
+})
 
-CustomValueInput.propTypes = {
-  closeDialog: PropTypes.func.isRequired,
-  handleChange: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
-  primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,
-  type: PropTypes.string.isRequired,
-  value: PropTypes.string,
-  workspaceIndex: PropTypes.number
-}
+export default CustomValueInput

@@ -25,7 +25,7 @@ export const evaluateAllWorkspaces = (workspace, elementId) => {
 export const unevaluate = (workspace, elementId) => {
   let element = workspace.entities[elementId]
 
-  if(element.componentName == SELECTABLE_PIPE) {
+  if (element.componentName == SELECTABLE_PIPE) {
     element = workspace.entities[element.output.elementId]
   }
 
@@ -34,8 +34,8 @@ export const unevaluate = (workspace, elementId) => {
   const newUnitTests = workspace.unitTests.map((unitTest) => {
     let newUnitTest = { values: {} }
 
-    for(let id in unitTest.values) {
-      if(valueIds.indexOf(parseInt(id)) == -1) {
+    for (let id in unitTest.values) {
+      if (valueIds.indexOf(parseInt(id)) == -1) {
         newUnitTest.values[id] = unitTest.values[id]
       }
     }

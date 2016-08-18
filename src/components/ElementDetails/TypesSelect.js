@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 
 import {
   PrimitivePropTypes
@@ -6,8 +6,16 @@ import {
 
 import Translate from '../Translate'
 
-export default class TypesSelect extends Component {
-  render() {
+const TypesSelect = React.createClass({
+  propTypes: {
+    handleChange: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired,
+    primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,
+    type: PropTypes.string.isRequired,
+    workspaceIndex: PropTypes.number
+  },
+
+  render () {
     const {
       handleChange,
       id,
@@ -19,44 +27,37 @@ export default class TypesSelect extends Component {
     return (
       <div>
         <Translate
-          HtmlElement="label"
-          message="type"
+          HtmlElement='label'
+          message='type'
         />
         <select
-          value={ type }
-          onChange={ (e) => handleChange(id, e, workspaceIndex) }
+          value={type}
+          onChange={(e) => handleChange(id, e, workspaceIndex)}
         >
-          { /* TestInput 'type' will be 'null' by default */ }
+          {}
           <Translate
-            childProps={ { disabled: true, value: "null" } }
-            HtmlElement="option"
-            message="empty"
+            childProps={{ disabled: true, value: 'null' }}
+            HtmlElement='option'
+            message='empty'
           />
 
-          { Object.keys(primitives).map((key) => {
-              const primitive = primitives[key]
+          {Object.keys(primitives).map((key) => {
+            const primitive = primitives[key]
 
-              return (
-                <option
-                  key={ primitive.id }
-                  value={ primitive.type }
-                >
-                  { primitive.label }
-                </option>
-              )
-            }
+            return (
+              <option
+                key={primitive.id}
+                value={primitive.type}
+              >
+              {primitive.label}
+              </option>
+            )
+          }
           )}
         </select>
       </div>
     )
-
   }
-}
+})
 
-TypesSelect.propTypes = {
-  handleChange: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
-  primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,
-  type: PropTypes.string.isRequired,
-  workspaceIndex: PropTypes.number
-}
+export default TypesSelect

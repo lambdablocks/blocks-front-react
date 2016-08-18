@@ -1,9 +1,14 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 
 import Translate from '../Translate'
 
-export default class DialogButton extends Component {
-  render() {
+const DialogButton = React.createClass({
+  propTypes: {
+    message: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired
+  },
+
+  render () {
     const {
       message,
       onClick
@@ -11,15 +16,12 @@ export default class DialogButton extends Component {
 
     return (
       <Translate
-        childProps={ { onClick } }
-        HtmlElement="button"
-        message={ message }
+        childProps={{ onClick }}
+        HtmlElement='button'
+        message={message}
       />
     )
   }
-}
+})
 
-DialogButton.propTypes = {
-  message: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
-}
+export default DialogButton

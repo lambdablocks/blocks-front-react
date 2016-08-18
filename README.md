@@ -171,6 +171,18 @@ $ npm start
 ```
 Open `localhost:8080` in your browser.
 
+### Using webpack
+You need `webpack` and `webpack-dev-server` installed in your machine.
+
+```
+// for production
+$ npm run webpack
+
+// for development
+$ npm run webpack-dev
+```
+
+The development build will serve the app at `http://localhost:8080/webpack-dev-server/`
 
 ## Tasks
 

@@ -41,16 +41,23 @@
     "redux-thunk": "^0.1.0"
   },
   "devDependencies": {
-    "babel-core": "^6.3.0",
-    "babel-plugin-transform-object-rest-spread": "^6.3.13",
-    "babel-preset-es2015": "^6.3.13",
-    "babel-preset-react": "^6.3.13",
+    "babel-core": "6.13.2",
+    "babel-loader": "6.2.5",
+    "babel-plugin-syntax-object-rest-spread": "6.13.0",
+    "babel-plugin-transform-object-rest-spread": "6.8.0",
+    "babel-preset-es2015": "6.13.2",
+    "babel-preset-es2016": "6.11.3",
+    "babel-preset-react": "6.11.1",
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
     "http-server": "^0.8.5",
-    "watchify": "^3.3.1"
+    "watchify": "^3.3.1",
+    "webpack": "1.13.2",
+    "webpack-dev-server": "1.14.1"
   },
   "scripts": {
-    "start": "watchify --extension=js -o dist/app.js src/index.js & watchify --extension=js -o dist/tutorial/app.js src/tutorial-index.js & http-server dist"
+    "start": "watchify --extension=js -o dist/app.js src/index.js & watchify --extension=js -o dist/tutorial/app.js src/tutorial-index.js & http-server dist",
+    "webpack": "webpack --progress --production",
+    "webpack-dev": "webpack-dev-server --content-base dist"
   }
 }

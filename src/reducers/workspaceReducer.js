@@ -19,7 +19,7 @@ import {
   START_DRAG,
   STOP_DRAG,
   UNEVALUATE,
-  UNLINK_SLOTS,
+  UNLINK_SLOTS
 } from '../actions'
 
 import {

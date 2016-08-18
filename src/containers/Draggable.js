@@ -5,7 +5,7 @@ import { LEFT } from '../components/constants'
 const mapDispatchToProps = (dispatch) => {
   return {
     handleMouseDown: (elementId, mouseEvent, elementPosition) => {
-      if(mouseEvent.button != LEFT)
+      if (mouseEvent.button != LEFT)
         return
 
       dispatch(

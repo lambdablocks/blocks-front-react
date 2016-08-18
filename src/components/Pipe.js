@@ -1,18 +1,24 @@
-import React, { PropTypes, Component } from 'react'
-import { Group, Path, Shape } from 'react-art'
+import React, { PropTypes } from 'react'
+import { Path, Shape } from 'react-art'
 
 import { getConstant } from './constants'
 import { PIPE } from '../utils/componentNames'
 import { PositionPropTypes } from '../propTypes'
 
-class Pipe extends Component {
-  render() {
+const Pipe = React.createClass({
+  propTypes: {
+    fillColor: PropTypes.string.isRequired,
+    inputPosition: PositionPropTypes.isRequired,
+    outputPosition: PositionPropTypes.isRequired,
+    strokeColor: PropTypes.string.isRequired
+  },
+
+  render () {
     const {
       inputPosition,
       fillColor,
       strokeColor,
-      outputPosition,
-      type
+      outputPosition
     } = this.props
     const componentName = PIPE
     const slotHeight = getConstant(componentName, 'slotHeight')
@@ -32,19 +38,12 @@ class Pipe extends Component {
 
     return (
       <Shape
-        d={ path }
-        fill={ fillColor }
-        stroke={ strokeColor }
+        d={path}
+        fill={fillColor}
+        stroke={strokeColor}
       />
     )
   }
-}
-
-Pipe.propTypes = {
-  fillColor: PropTypes.string.isRequired,
-  inputPosition: PositionPropTypes.isRequired,
-  outputPosition: PositionPropTypes.isRequired,
-  strokeColor: PropTypes.string.isRequired
-}
+})
 
 export default Pipe

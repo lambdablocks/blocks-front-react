@@ -4,7 +4,7 @@ import { getConstant } from '../../components/constants'
 export const updateElementInWorkspace = (workspace, payload) => {
   const { selectionState } = workspace
 
-  if(!selectionState.dragStarted) {
+  if (!selectionState.dragStarted) {
     return workspace
   }
 
@@ -33,7 +33,7 @@ export const updateElementInWorkspace = (workspace, payload) => {
             y,
             margin,
             parentElement.size.height - originalElement.size.height - margin
-          ),
+          )
         }
       }
     }
@@ -41,7 +41,7 @@ export const updateElementInWorkspace = (workspace, payload) => {
 }
 
 export const addDragStartedToWorkspace = (workspace, payload) => {
-  const  {
+  const {
     elementId,
     elementPosition,
     mousePosition

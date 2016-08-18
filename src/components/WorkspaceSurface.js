@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 import { Surface } from 'react-art'
 
 import MainBrick from '../containers/MainBrick'
@@ -12,8 +12,15 @@ const surfaceStyles = {
   backgroundColor: 'white'
 }
 
-class WorkspaceSurface extends Component {
-  render() {
+const WorkspaceSurface = React.createClass({
+  propTypes: {
+    index: PropTypes.number.isRequired,
+    mainBrick: PropTypes.object.isRequired,
+    selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
+    unitTest: PropTypes.object.isRequired
+  },
+
+  render () {
     const {
       index,
       mainBrick,
@@ -23,34 +30,27 @@ class WorkspaceSurface extends Component {
 
     return (
       <div
-       style={ workspaceSurfaceStyles }
+        style={workspaceSurfaceStyles}
       >
         <Surface
-          height={ 600 }
-          style={ surfaceStyles }
-          width={ mainBrick.size.width + mainBrick.position.x * 2 }
+          height={600}
+          style={surfaceStyles}
+          width={mainBrick.size.width + mainBrick.position.x * 2}
         >
           <TestResult
-            mainBrick={ mainBrick }
-            unitTest={ unitTest }
+            mainBrick={mainBrick}
+            unitTest={unitTest}
           />
           <MainBrick
-            selectedSlots={ selectedSlots }
-            unitTest={ unitTest }
-            workspaceIndex={ index }
-            { ...mainBrick }
+            selectedSlots={selectedSlots}
+            unitTest={unitTest}
+            workspaceIndex={index}
+            {...mainBrick}
           />
         </Surface>
       </div>
     )
   }
-}
-
-WorkspaceSurface.propTypes = {
-  index: PropTypes.number.isRequired,
-  mainBrick: PropTypes.object.isRequired,
-  selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
-  unitTest: PropTypes.object.isRequired
-}
+})
 
 export default WorkspaceSurface

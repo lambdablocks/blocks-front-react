@@ -15,10 +15,10 @@ export const doesAllInputsHaveValues = (element, valueIds, unitTest) => {
 export const elementInputValueIds = (element) => {
   let valueIds = []
 
-  for(let id in element.inputSlots) {
+  for (let id in element.inputSlots) {
     const inputSlot = element.inputSlots[id]
 
-    if(inputSlot.value) {
+    if (inputSlot.value) {
       valueIds[inputSlot.index] = inputSlot.value.slotId
     }
   }
@@ -29,11 +29,11 @@ export const elementInputValueIds = (element) => {
 const unitTestValues = (valueIds, unitTest) => {
   let values = []
 
-  for(let id in valueIds) {
+  for (let id in valueIds) {
     const valueId = valueIds[id]
     const element = unitTest.values[valueId]
 
-    if(element && element.type !== ERROR && element.value) {
+    if (element && element.type !== ERROR && element.value) {
       values.push({
         id: valueId,
         type: element.type,
@@ -47,78 +47,78 @@ const unitTestValues = (valueIds, unitTest) => {
 
 const nativeBricks = {
   arithmetic: {
-    "+": (a, b) => {
-      if(assert([a, b], ["number", "number"]))
+    '+': (a, b) => {
+      if (assert([a, b], ['number', 'number']))
         return a + b
-      throw "Invalid parameters"
+      throw 'Invalid parameters'
     },
-    "-": (a, b) => {
-      if(assert([a, b], ["number", "number"]))
+    '-': (a, b) => {
+      if (assert([a, b], ['number', 'number']))
         return a - b
-      throw "Invalid parameters"
+      throw 'Invalid parameters'
     },
-    "*": (a, b) => {
-      if(assert([a, b], ["number", "number"]))
+    '*': (a, b) => {
+      if (assert([a, b], ['number', 'number']))
         return a * b
-      throw "Invalid parameters"
+      throw 'Invalid parameters'
     },
-    "/": (a, b) => {
-      if(assert([a, b], ["number", "number"]))
+    '/': (a, b) => {
+      if (assert([a, b], ['number', 'number']))
         return a / b
-      throw "Invalid parameters"
+      throw 'Invalid parameters'
     }
   },
   boolean: {
-    "&&": (a, b) => a && b,
-    "||": (a, b) => a || b,
-    "!": (a) => !a
+    '&&': (a, b) => a && b,
+    '||': (a, b) => a || b,
+    '!': (a) => !a
   },
   eq: {
-    "==": (a, b) => a === b,
+    '==': (a, b) => a === b
   },
   hof: {
-    "join": (a) => a.join(''),
-    "sort": (a) => a.slice(0).sort()
+    'join': (a) => a.join(''),
+    'sort': (a) => a.slice(0).sort()
   },
   parse: {
-    "toNumber": (a) => {
-      if(assert([a], ["string"]))
+    'toNumber': (a) => {
+      if (assert([a], ['string']))
         return parseFloat(a)
-      throw "Invalid parameters"
+      throw 'Invalid parameters'
     },
-    "toString": (a) => {
-      if(assert([a], ["number"]))
+    'toString': (a) => {
+      if (assert([a], ['number']))
         return a.toString()
-      throw "Invalid parameters"
-    },
+      throw 'Invalid parameters'
+    }
   },
   string: {
-    "concat": (a, b) => {
-      if(assert([a, b], ["string", "string"]))
+    'concat': (a, b) => {
+      if (assert([a, b], ['string', 'string']))
         return a.concat(b)
-      throw "Invalid parameters"
+      throw 'Invalid parameters'
     },
-    "length": (a) => {
-      if(assert([a], ["string"]))
+    'length': (a) => {
+      if (assert([a], ['string']))
         return a.length
-      throw "Invalid parameters"
+      throw 'Invalid parameters'
     },
-    "reverse": (a) => {
-      if(assert([a], ["string"]))
+    'reverse': (a) => {
+      if (assert([a], ['string']))
         return a.split('').reverse().join('')
-      throw "Invalid parameters"
+      throw 'Invalid parameters'
     },
-    "split": (a) => {
-      if(assert([a], ["string"]))
+    'split': (a) => {
+      if (assert([a], ['string']))
         return a.split('')
-      throw "Invalid parameters"
-    },
+      throw 'Invalid parameters'
+    }
   }
 }
 
 const assert = (parameters, types) => {
-  for(var i = 0; i < parameters.length; i++) {
-    if(typeof parameters[i] !== types[i])
+  for (var i = 0; i < parameters.length; i++) {
+    if (typeof parameters[i] !== types[i])
       return false
   }
 
@@ -126,7 +126,7 @@ const assert = (parameters, types) => {
 }
 
 const parsers = {
-  boolean: (value) => value.toLowerCase() == "true",
+  boolean: (value) => value.toLowerCase() == 'true',
   list: (value) => value.split(','),
   number: (value) => parseFloat(value),
   string: (value) => value
@@ -138,10 +138,10 @@ const _evalBrick = (brick, args) => {
 
   try {
     brickOutput = nativeBricks[moduleName][name].apply(null, args)
-  } catch(error) {
+  } catch (error) {
   }
 
-  if(brickOutput === undefined) {
+  if (brickOutput === undefined) {
     return {
       componentName: BRICK,
       type: ERROR,
@@ -166,15 +166,15 @@ const _tryEvalPath = (workspace, unitTest, elementId) => {
   const brick = workspace.entities[elementId]
   let args = []
 
-  if(brick.componentName != BRICK) {
+  if (brick.componentName != BRICK) {
     return unitTest
   }
 
-  for(var id in brick.inputSlots) {
+  for (var id in brick.inputSlots) {
     const { value } = brick.inputSlots[id]
     const slotValue = unitTest.values[value.slotId]
 
-    if(slotValue && slotValue.type && slotValue.value) {
+    if (slotValue && slotValue.type && slotValue.value) {
       args.push(parsers[slotValue.type](slotValue.value))
     } else {
       return unitTest
@@ -194,13 +194,13 @@ const _tryEvalPath = (workspace, unitTest, elementId) => {
 }
 
 export const evalPathValueIds = (workspace, element, valueIds) => {
-  if(element.componentName != MAIN_BRICK) {
+  if (element.componentName != MAIN_BRICK) {
     const outputSlotId = Object.keys(element.outputSlots)[0]
     const outputSlot = element.outputSlots[outputSlotId]
 
     valueIds.push(outputSlot.id)
 
-    if(outputSlot.outputElementIds) {
+    if (outputSlot.outputElementIds) {
       outputSlot.outputElementIds.forEach((id) => {
         evalPathValueIds(workspace, workspace.entities[id], valueIds)
       })
@@ -211,7 +211,7 @@ export const evalPathValueIds = (workspace, element, valueIds) => {
 }
 
 const _getOutputType = (output) => {
-  if(Array.isArray(output)) {
+  if (Array.isArray(output)) {
     return 'list'
   } else {
     return typeof output

@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 
 import {
   getTestResultColor
@@ -20,34 +20,34 @@ const liStyles = {
   width: '20px'
 }
 
-export default class TestSummary extends Component {
-  render() {
+const TestSummary = React.createClass({
+  propTypes: {
+    unitTests: PropTypes.arrayOf(
+      PropTypes.shape({
+        result: PropTypes.string.isRequired
+      }).isRequired
+    ).isRequired
+  },
+
+  render () {
     const {
       unitTests
     } = this.props
 
     return (
-      <ul style={ ulStyles } >
-        { unitTests.map((unitTest, index) =>
+      <ul style={ulStyles} >
+        {unitTests.map((unitTest, index) =>
           <li
-            key={ index }
-            style={
-              {
-                ...liStyles,
-                backgroundColor: getTestResultColor(unitTest)
-              }
-            }
+            key={index}
+            style={{
+              ...liStyles,
+              backgroundColor: getTestResultColor(unitTest)
+            }}
           ></li>
         )}
       </ul>
     )
   }
-}
+})
 
-TestSummary.propTypes = {
-  unitTests: PropTypes.arrayOf(
-    PropTypes.shape({
-      result: PropTypes.string.isRequired
-    }).isRequired
-  ).isRequired
-}
+export default TestSummary
