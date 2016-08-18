@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 import throttle from 'lodash.throttle'
 
 import { UNIT_TEST } from './constants'

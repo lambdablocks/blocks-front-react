@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropType } from 'react'
 import { Group } from 'react-art'
 import Rectangle from 'react-art/lib/Rectangle.art'
 

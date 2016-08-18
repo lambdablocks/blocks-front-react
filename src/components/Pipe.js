@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 import { Group, Path, Shape } from 'react-art'
 
 import { getConstant } from './constants'

@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 import { Surface } from 'react-art'
 
 import MainBrick from '../containers/MainBrick'

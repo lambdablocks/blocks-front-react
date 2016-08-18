@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 import { Group } from 'react-art'
 import Rectangle from 'react-art/lib/Rectangle.art'
 
@@ -51,13 +51,13 @@ const MainBrick = React.createClass({
       <Group y={slotHeight} >
         {testInputs.map((element) => {
           return (
-              <TestInput
-                key={element.id}
-                workspaceIndex={workspaceIndex}
-                binding={unitTest.values[element.valueId] || {}}
-                {...element}
-              />
-            )
+            <TestInput
+              key={element.id}
+              workspaceIndex={workspaceIndex}
+              binding={unitTest.values[element.valueId] || {}}
+              {...element}
+            />
+          )
         })
         }
         <Rectangle
@@ -71,13 +71,13 @@ const MainBrick = React.createClass({
           const ReactComponent = getComponent(element.componentName)
 
           return (
-              <ReactComponent
-                key={element.id}
-                selectedSlots={selectedSlots}
-                binding={unitTest.values[element.valueId] || {}}
-                {...element}
-              />
-            )
+            <ReactComponent
+              key={element.id}
+              selectedSlots={selectedSlots}
+              binding={unitTest.values[element.valueId] || {}}
+              {...element}
+            />
+          )
         })
         }
         {testOutputs.map((element) => {

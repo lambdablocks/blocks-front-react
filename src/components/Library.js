@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 
 import Module from './Module'
 import { PrimitivePropTypes } from '../propTypes'
@@ -54,13 +54,13 @@ const Library = React.createClass({
                   const primitive = items.primitives[key]
 
                   return (
-                      <li
-                        key={primitive.id}
-                        onClick={() => onPrimitiveClick(primitive.type)}
-                      >
-                        {primitive.label}
-                      </li>
-                    )
+                    <li
+                      key={primitive.id}
+                      onClick={() => onPrimitiveClick(primitive.type)}
+                    >
+                    {primitive.label}
+                    </li>
+                  )
                 }
                 )}
               </ul>

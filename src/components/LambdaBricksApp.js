@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 
 import { UNIT_TEST } from './constants'
 import Library from '../containers/Library'
