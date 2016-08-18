@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 
 import {
   PrimitivePropTypes
@@ -7,7 +7,18 @@ import {
 import CustomValueInput from './CustomValueInput'
 import TypesSelect from './TypesSelect'
 
-export default class TestNodeDetails extends Component {
+const TestNodeDetails = React.createClass({
+  propTypes: {
+    changeTestNodeType: PropTypes.func.isRequired,
+    changeTestNodeValue: PropTypes.func.isRequired,
+    closeDialog: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired,
+    primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,
+    value: PropTypes.string,
+    type: PropTypes.string.isRequired,
+    workspaceIndex: PropTypes.number
+  },
+
   render () {
     const {
       changeTestNodeType,
@@ -45,15 +56,6 @@ export default class TestNodeDetails extends Component {
       </div>
     )
   }
-}
+})
 
-TestNodeDetails.propTypes = {
-  changeTestNodeType: PropTypes.func.isRequired,
-  changeTestNodeValue: PropTypes.func.isRequired,
-  closeDialog: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
-  primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,
-  value: PropTypes.string,
-  type: PropTypes.string.isRequired,
-  workspaceIndex: PropTypes.number
-}
+export default TestNodeDetails

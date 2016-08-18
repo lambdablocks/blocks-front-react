@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 import ReactDOM from 'react-dom'
 
 import {
@@ -8,25 +8,28 @@ import {
 import { colors } from '../constants'
 import Translate from '../Translate'
 
-export default class CustomValueInput extends Component {
-  constructor (props) {
-    super(props)
-
-    this.closeOnEnterKeyDown = this.closeOnEnterKeyDown.bind(this)
-    this.customInput = this.customInput.bind(this)
-  }
+const CustomValueInput = React.createClass({
+  propTypes: {
+    closeDialog: PropTypes.func.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired,
+    primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,
+    type: PropTypes.string.isRequired,
+    value: PropTypes.string,
+    workspaceIndex: PropTypes.number
+  },
 
   componentDidMount () {
     if (this.refs.valueInput) {
       ReactDOM.findDOMNode(this.refs.valueInput).focus()
     }
-  }
+  },
 
   closeOnEnterKeyDown (e) {
     if (e.key == 'Enter') {
       this.props.closeDialog()
     }
-  }
+  },
 
   customInput () {
     const {
@@ -75,7 +78,7 @@ export default class CustomValueInput extends Component {
         />
       )
     }
-  }
+  },
 
   render () {
     return (
@@ -88,14 +91,6 @@ export default class CustomValueInput extends Component {
       </div>
     )
   }
-}
+})
 
-CustomValueInput.propTypes = {
-  closeDialog: PropTypes.func.isRequired,
-  handleChange: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
-  primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,
-  type: PropTypes.string.isRequired,
-  value: PropTypes.string,
-  workspaceIndex: PropTypes.number
-}
+export default CustomValueInput

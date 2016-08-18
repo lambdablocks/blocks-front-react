@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 
 import {
   PrimitivePropTypes
@@ -6,7 +6,15 @@ import {
 
 import Translate from '../Translate'
 
-export default class TypesSelect extends Component {
+const TypesSelect = React.createClass({
+  propTypes: {
+    handleChange: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired,
+    primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,
+    type: PropTypes.string.isRequired,
+    workspaceIndex: PropTypes.number
+  },
+
   render () {
     const {
       handleChange,
@@ -51,12 +59,6 @@ export default class TypesSelect extends Component {
     )
 
   }
-}
+})
 
-TypesSelect.propTypes = {
-  handleChange: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
-  primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,
-  type: PropTypes.string.isRequired,
-  workspaceIndex: PropTypes.number
-}
+export default TypesSelect
