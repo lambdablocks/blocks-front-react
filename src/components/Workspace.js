@@ -23,7 +23,19 @@ const workspacesStyles = {
   display: 'flex'
 }
 
-export default class Workspace extends Component {
+export default const Workspace = React.createClass({
+  propTypes: {
+    dragStarted: PropTypes.bool.isRequired,
+    initWorkspace: PropTypes.func.isRequired,
+    mainBrick: PropTypes.object.isRequired,
+    moveElement: PropTypes.func.isRequired,
+    selectedElement: PropTypes.object.isRequired,
+    selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
+    selectElementOrStopDrag: PropTypes.func.isRequired,
+    type: PropTypes.string.isRequired,
+    unitTests: PropTypes.array.isRequired
+  },
+
   componentDidMount() {
     const {
       initWorkspace,
@@ -31,7 +43,7 @@ export default class Workspace extends Component {
     } = this.props
 
     initWorkspace(type)
-  }
+  },
 
   render() {
     const {
@@ -100,16 +112,4 @@ export default class Workspace extends Component {
       </div>
     )
   }
-}
-
-Workspace.propTypes = {
-  dragStarted: PropTypes.bool.isRequired,
-  initWorkspace: PropTypes.func.isRequired,
-  mainBrick: PropTypes.object.isRequired,
-  moveElement: PropTypes.func.isRequired,
-  selectedElement: PropTypes.object.isRequired,
-  selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
-  selectElementOrStopDrag: PropTypes.func.isRequired,
-  type: PropTypes.string.isRequired,
-  unitTests: PropTypes.array.isRequired
-}
+})

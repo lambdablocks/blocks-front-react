@@ -12,8 +12,8 @@ const params = parse(location.search)
 ReactDOM.render(
   <Provider store={store}>
     <LambdaBricksApp
-      libraryId={ params['id'] }
-      workspaceType={ params['ws'] }
+      libraryId={params['id']}
+      workspaceType={params['ws']}
     />
   </Provider>,
   document.getElementById('main')
