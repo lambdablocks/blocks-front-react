@@ -23,7 +23,7 @@ const workspacesStyles = {
   display: 'flex'
 }
 
-export default const Workspace = React.createClass({
+const Workspace = React.createClass({
   propTypes: {
     dragStarted: PropTypes.bool.isRequired,
     initWorkspace: PropTypes.func.isRequired,
@@ -36,7 +36,7 @@ export default const Workspace = React.createClass({
     unitTests: PropTypes.array.isRequired
   },
 
-  componentDidMount() {
+  componentDidMount () {
     const {
       initWorkspace,
       type
@@ -45,7 +45,7 @@ export default const Workspace = React.createClass({
     initWorkspace(type)
   },
 
-  render() {
+  render () {
     const {
       dragStarted,
       mainBrick,
@@ -58,7 +58,7 @@ export default const Workspace = React.createClass({
     } = this.props
     let handleMouseMove, handleMouseUp
 
-    if(dragStarted) {
+    if (dragStarted) {
       handleMouseMove = (e) => {
         moveElement({ x: e.pageX, y: e.pageY })
       }
@@ -113,3 +113,5 @@ export default const Workspace = React.createClass({
     )
   }
 })
+
+export default Workspace

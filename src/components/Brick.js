@@ -14,18 +14,12 @@ import {
 
 import { ERROR } from '../utils/evalUtils'
 
-class Brick extends Component {
-  constructor(props) {
-    super(props)
-
-    this.startDrag = this.startDrag.bind(this)
-  }
-
+const Brick = React.createClass({
   startDrag(mouseEvent) {
     const { handleMouseDown, id, position } = this.props
 
     handleMouseDown(id, mouseEvent, position)
-  }
+  },
 
   render() {
     const {
@@ -75,7 +69,7 @@ class Brick extends Component {
       </Group>
     )
   }
-}
+})
 
 Brick.propTypes = {
   componentName: PropTypes.string.isRequired,
