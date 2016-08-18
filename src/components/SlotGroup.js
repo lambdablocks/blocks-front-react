@@ -7,7 +7,17 @@ import { SlotPropTypes } from '../propTypes'
 
 import Slot from './Slot'
 
-class SlotGroup extends Component {
+const SlotGroup = React.createClass({
+  propTypes: {
+    componentName: PropTypes.string.isRequired,
+    parentId: PropTypes.number.isRequired,
+    parentWidth: PropTypes.number.isRequired,
+    selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
+    selectSlot: PropTypes.func.isRequired,
+    slots: SlotPropTypes.isRequired,
+    y: PropTypes.number.isRequired
+  },
+
   render() {
     const {
       componentName,
@@ -48,23 +58,13 @@ class SlotGroup extends Component {
         }
       </Group>
     )
-  }
+  },
 
   slotGroupWidth(slots, slotOffset, slotAndOffset) {
     const totalSlots = Object.keys(slots).length
 
     return slotOffset + (totalSlots * slotAndOffset)
   }
-}
-
-SlotGroup.propTypes = {
-  componentName: PropTypes.string.isRequired,
-  parentId: PropTypes.number.isRequired,
-  parentWidth: PropTypes.number.isRequired,
-  selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
-  selectSlot: PropTypes.func.isRequired,
-  slots: SlotPropTypes.isRequired,
-  y: PropTypes.number.isRequired
-}
+})
 
 export default SlotGroup
