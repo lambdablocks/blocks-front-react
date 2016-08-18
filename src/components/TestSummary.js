@@ -20,8 +20,16 @@ const liStyles = {
   width: '20px'
 }
 
-export default class TestSummary extends Component {
-  render() {
+const TestSummary = React.createClass({
+  propTypes: {
+    unitTests: PropTypes.arrayOf(
+      PropTypes.shape({
+        result: PropTypes.string.isRequired
+      }).isRequired
+    ).isRequired
+  },
+
+  render () {
     const {
       unitTests
     } = this.props
@@ -42,12 +50,6 @@ export default class TestSummary extends Component {
       </ul>
     )
   }
-}
+})
 
-TestSummary.propTypes = {
-  unitTests: PropTypes.arrayOf(
-    PropTypes.shape({
-      result: PropTypes.string.isRequired
-    }).isRequired
-  ).isRequired
-}
+export default TestSummary

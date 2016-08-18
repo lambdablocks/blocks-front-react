@@ -5,8 +5,15 @@ import { getConstant } from './constants'
 import { PIPE } from '../utils/componentNames'
 import { PositionPropTypes } from '../propTypes'
 
-class Pipe extends Component {
-  render() {
+const Pipe = React.createClass({
+  propTypes: {
+    fillColor: PropTypes.string.isRequired,
+    inputPosition: PositionPropTypes.isRequired,
+    outputPosition: PositionPropTypes.isRequired,
+    strokeColor: PropTypes.string.isRequired
+  },
+
+  render () {
     const {
       inputPosition,
       fillColor,
@@ -38,13 +45,6 @@ class Pipe extends Component {
       />
     )
   }
-}
-
-Pipe.propTypes = {
-  fillColor: PropTypes.string.isRequired,
-  inputPosition: PositionPropTypes.isRequired,
-  outputPosition: PositionPropTypes.isRequired,
-  strokeColor: PropTypes.string.isRequired
-}
+})
 
 export default Pipe

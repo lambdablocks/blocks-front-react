@@ -12,7 +12,14 @@ const surfaceStyles = {
   backgroundColor: 'white'
 }
 
-class WorkspaceSurface extends Component {
+const WorkspaceSurface = React.createClass({
+  propTypes: {
+    index: PropTypes.number.isRequired,
+    mainBrick: PropTypes.object.isRequired,
+    selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
+    unitTest: PropTypes.object.isRequired
+  },
+
   render() {
     const {
       index,
@@ -23,7 +30,7 @@ class WorkspaceSurface extends Component {
 
     return (
       <div
-       style={ workspaceSurfaceStyles }
+       style={workspaceSurfaceStyles}
       >
         <Surface
           height={ 600 }
@@ -44,13 +51,6 @@ class WorkspaceSurface extends Component {
       </div>
     )
   }
-}
-
-WorkspaceSurface.propTypes = {
-  index: PropTypes.number.isRequired,
-  mainBrick: PropTypes.object.isRequired,
-  selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
-  unitTest: PropTypes.object.isRequired
-}
+})
 
 export default WorkspaceSurface

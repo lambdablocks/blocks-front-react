@@ -1,7 +1,21 @@
 import React, { PropTypes, Component } from 'react'
 
-export default class Module extends Component {
-  render() {
+const Module = React.createClass({
+  propTypes: {
+    label: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    functions: PropTypes.arrayOf(
+      PropTypes.shape({
+        arity: PropTypes.number.isRequired,
+        id: PropTypes.number.isRequired,
+        label: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired
+      }).isRequired
+    ).isRequired,
+    onFunctionClick: PropTypes.func.isRequired
+  },
+
+  render () {
     const {
       functions,
       label,
@@ -31,18 +45,4 @@ export default class Module extends Component {
       </div>
     )
   }
-}
-
-Module.propTypes = {
-  label: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  functions: PropTypes.arrayOf(
-    PropTypes.shape({
-      arity: PropTypes.number.isRequired,
-      id: PropTypes.number.isRequired,
-      label: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired
-    }).isRequired
-  ).isRequired,
-  onFunctionClick: PropTypes.func.isRequired
-}
+})

@@ -10,7 +10,28 @@ import { PositionPropTypes, SizePropTypes } from '../propTypes'
 import TestInput from '../containers/TestInput'
 import TestOutput from '../containers/TestOutput'
 
-class MainBrick extends Component {
+const MainBrick = React.createClass({
+  propTypes: {
+    componentName: PropTypes.string.isRequired,
+    handleClick: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired,
+    inner: PropTypes.arrayOf(
+      PropTypes.shape({
+        componentName: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string,
+        position: PositionPropTypes,
+        value: PropTypes.any
+      })
+    ).isRequired,
+    selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
+    size: SizePropTypes.isRequired,
+    testInputs: PropTypes.arrayOf(PropTypes.object).isRequired,
+    testOutputs: PropTypes.arrayOf(PropTypes.object).isRequired,
+    unitTest: PropTypes.object.isRequired,
+    workspaceIndex: PropTypes.number.isRequired
+  },
+
   render() {
     const {
       componentName,
@@ -73,27 +94,6 @@ class MainBrick extends Component {
       </Group>
     )
   }
-}
-
-MainBrick.propTypes = {
-  componentName: PropTypes.string.isRequired,
-  handleClick: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
-  inner: PropTypes.arrayOf(
-    PropTypes.shape({
-      componentName: PropTypes.string.isRequired,
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string,
-      position: PositionPropTypes,
-      value: PropTypes.any
-    })
-  ).isRequired,
-  selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
-  size: SizePropTypes.isRequired,
-  testInputs: PropTypes.arrayOf(PropTypes.object).isRequired,
-  testOutputs: PropTypes.arrayOf(PropTypes.object).isRequired,
-  unitTest: PropTypes.object.isRequired,
-  workspaceIndex: PropTypes.number.isRequired
-}
+})
 
 export default composeBrick(MainBrick)

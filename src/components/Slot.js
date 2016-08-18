@@ -5,8 +5,19 @@ import { getConstant } from './constants'
 import { isSlotSelected } from '../utils'
 import { SLOT } from '../utils/componentNames'
 
-class Slot extends Component {
-  render() {
+const Slot = React.createClass({
+  propTypes: {
+    fillColor: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    parentId: PropTypes.number.isRequired,
+    selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
+    selectSlot: PropTypes.func.isRequired,
+    strokeColor: PropTypes.string.isRequired,
+    x: PropTypes.number.isRequired,
+    y: PropTypes.number.isRequired
+  },
+
+  render () {
     const {
       fillColor: unselectedFillColor,
       id,
@@ -37,17 +48,6 @@ class Slot extends Component {
       />
     )
   }
-}
-
-Slot.propTypes = {
-  fillColor: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
-  parentId: PropTypes.number.isRequired,
-  selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
-  selectSlot: PropTypes.func.isRequired,
-  strokeColor: PropTypes.string.isRequired,
-  x: PropTypes.number.isRequired,
-  y: PropTypes.number.isRequired
-}
+})
 
 export default Slot

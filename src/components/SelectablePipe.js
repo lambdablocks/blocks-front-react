@@ -6,8 +6,17 @@ import { BindingPropTypes, PositionPropTypes } from '../propTypes'
 import { getFillColor } from '../utils'
 import Pipe from './Pipe'
 
-class SelectablePipe extends Component {
-  render() {
+const SelectablePipe = React.createClass({
+  propTypes: {
+    componentName: PropTypes.string.isRequired,
+    binding: BindingPropTypes.isRequired,
+    handleClick: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired,
+    inputPosition: PositionPropTypes.isRequired,
+    outputPosition: PositionPropTypes.isRequired
+  },
+
+  render () {
     const {
       componentName,
       binding,
@@ -43,15 +52,6 @@ class SelectablePipe extends Component {
       </Group>
     )
   }
-}
-
-SelectablePipe.propTypes = {
-  componentName: PropTypes.string.isRequired,
-  binding: BindingPropTypes.isRequired,
-  handleClick: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
-  inputPosition: PositionPropTypes.isRequired,
-  outputPosition: PositionPropTypes.isRequired
-}
+})
 
 export default SelectablePipe

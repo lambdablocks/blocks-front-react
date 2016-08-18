@@ -7,8 +7,17 @@ import { getFillColor } from '../utils'
 import Pipe from './Pipe'
 import { BindingPropTypes, PositionPropTypes } from '../propTypes'
 
-class TestInput extends Component {
-  render() {
+const TestInput = React.createClass({
+  propTypes: {
+    componentName: PropTypes.string.isRequired,
+    binding: BindingPropTypes,
+    handleClick: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired,
+    slotPosition: PositionPropTypes.isRequired,
+    workspaceIndex: PropTypes.number.isRequired
+  },
+
+  render () {
     const {
       componentName,
       binding,
@@ -63,15 +72,6 @@ class TestInput extends Component {
       </Group>
     )
   }
-}
-
-TestInput.propTypes = {
-  componentName: PropTypes.string.isRequired,
-  binding: BindingPropTypes,
-  handleClick: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
-  slotPosition: PositionPropTypes.isRequired,
-  workspaceIndex: PropTypes.number.isRequired
-}
+})
 
 export default TestInput

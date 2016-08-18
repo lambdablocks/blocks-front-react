@@ -12,11 +12,26 @@ import Logo from './Logo'
 import Translate from './Translate'
 import Workspace from '../containers/Workspace'
 
-export default class Tutorial extends Component {
-  constructor(props) {
-    super(props)
+export default const Tutorial = React.createClass({
+  /*!
+   * Required stuff
+   */
 
-    this.state = {
+  childContextTypes: {
+    locale: PropTypes.string.isRequired
+  },
+
+  propTypes: {
+    locale: PropTypes.string.isRequired,
+    step: PropTypes.number.isRequired
+  },
+
+  /*!
+   * Initial values
+   */
+
+  getInitialState () {
+    return {
       joyrideOverlay: true,
       joyrideType: 'continuous',
       ready: false,
@@ -54,19 +69,35 @@ export default class Tutorial extends Component {
         }
       ]
     }
-  }
+  },
+
+  getDefaultProps () {
+    return {
+      step: 1
+    }
+  },
+
+  getChildContext () {
+    return {
+      locale: this.props.locale
+    }
+  },
+
+  /*!
+   * Lyfe-cycle events
+   */
 
   componentDidMount() {
     this.setState({
       ready: getTutorialConfig(this.props.step).openSiteTourAtStart
     })
-  }
+  },
 
   componentDidUpdate(prevProps, prevState) {
     if(!prevState.ready && this.state.ready) {
       this.refs.joyride.start(true)
     }
-  }
+  },
 
   render() {
     const { locale, step } = this.props
@@ -108,23 +139,4 @@ export default class Tutorial extends Component {
       </div>
     )
   }
-
-  getChildContext() {
-    return {
-      locale: this.props.locale
-    }
-  }
-}
-
-Tutorial.childContextTypes = {
-  locale: PropTypes.string.isRequired
-}
-
-Tutorial.defaultProps = {
-  step: 1
-}
-
-Tutorial.PropTypes = {
-  locale: PropTypes.string.isRequired,
-  step: PropTypes.number.isRequired
-}
+})

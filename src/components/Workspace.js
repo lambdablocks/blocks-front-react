@@ -23,17 +23,29 @@ const workspacesStyles = {
   display: 'flex'
 }
 
-export default class Workspace extends Component {
-  componentDidMount() {
+const Workspace = React.createClass({
+  propTypes: {
+    dragStarted: PropTypes.bool.isRequired,
+    initWorkspace: PropTypes.func.isRequired,
+    mainBrick: PropTypes.object.isRequired,
+    moveElement: PropTypes.func.isRequired,
+    selectedElement: PropTypes.object.isRequired,
+    selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
+    selectElementOrStopDrag: PropTypes.func.isRequired,
+    type: PropTypes.string.isRequired,
+    unitTests: PropTypes.array.isRequired
+  },
+
+  componentDidMount () {
     const {
       initWorkspace,
       type
     } = this.props
 
     initWorkspace(type)
-  }
+  },
 
-  render() {
+  render () {
     const {
       dragStarted,
       mainBrick,
@@ -46,7 +58,7 @@ export default class Workspace extends Component {
     } = this.props
     let handleMouseMove, handleMouseUp
 
-    if(dragStarted) {
+    if (dragStarted) {
       handleMouseMove = (e) => {
         moveElement({ x: e.pageX, y: e.pageY })
       }
@@ -100,16 +112,6 @@ export default class Workspace extends Component {
       </div>
     )
   }
-}
+})
 
-Workspace.propTypes = {
-  dragStarted: PropTypes.bool.isRequired,
-  initWorkspace: PropTypes.func.isRequired,
-  mainBrick: PropTypes.object.isRequired,
-  moveElement: PropTypes.func.isRequired,
-  selectedElement: PropTypes.object.isRequired,
-  selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
-  selectElementOrStopDrag: PropTypes.func.isRequired,
-  type: PropTypes.string.isRequired,
-  unitTests: PropTypes.array.isRequired
-}
+export default Workspace
