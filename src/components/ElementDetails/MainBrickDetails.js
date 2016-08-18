@@ -1,8 +1,15 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 
 import DialogButton from './DialogButton'
 
-export default class MainBrickDetails extends Component {
+const MainBrickDetails = React.createClass({
+  propTypes: {
+    addUnitTest: PropTypes.func.isRequired,
+    deleteUnitTest: PropTypes.func.isRequired,
+    totalUnitTests: PropTypes.number.isRequired,
+    workspaceIndex: PropTypes.number.isRequired
+  },
+
   render () {
     const {
       addUnitTest,
@@ -30,11 +37,6 @@ export default class MainBrickDetails extends Component {
       </div>
     )
   }
-}
+})
 
-MainBrickDetails.propTypes = {
-  addUnitTest: PropTypes.func.isRequired,
-  deleteUnitTest: PropTypes.func.isRequired,
-  totalUnitTests: PropTypes.number.isRequired,
-  workspaceIndex: PropTypes.number.isRequired
-}
+export default MainBrickDetails

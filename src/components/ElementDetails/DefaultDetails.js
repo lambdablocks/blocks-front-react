@@ -1,8 +1,13 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 
 import DialogButton from './DialogButton'
 
-export default class DefaultDetails extends Component {
+const DefaultDetails = React.createClass({
+  propTypes: {
+    deleteElement: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired
+  },
+
   render () {
     const {
       deleteElement,
@@ -16,9 +21,6 @@ export default class DefaultDetails extends Component {
       />
     )
   }
-}
+})
 
-DefaultDetails.propTypes = {
-  deleteElement: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired
-}
+export default DefaultDetails

@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 
 import {
   PrimitivePropTypes
@@ -7,7 +7,18 @@ import {
 import CustomValueInput from './CustomValueInput'
 import DialogButton from './DialogButton'
 
-export default class PrimitiveDetails extends Component {
+const PrimitiveDetails = React.createClass({
+  propTypes: {
+    deleteElement: PropTypes.func.isRequired,
+    changePrimitiveValue: PropTypes.func.isRequired,
+    closeDialog: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired,
+    primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,
+    type: PropTypes.string.isRequired,
+    value: PropTypes.string,
+    workspaceIndex: PropTypes.number
+  },
+
   render () {
     const {
       changePrimitiveValue,
@@ -39,15 +50,6 @@ export default class PrimitiveDetails extends Component {
       </div>
     )
   }
-}
+})
 
-PrimitiveDetails.propTypes = {
-  deleteElement: PropTypes.func.isRequired,
-  changePrimitiveValue: PropTypes.func.isRequired,
-  closeDialog: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
-  primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,
-  type: PropTypes.string.isRequired,
-  value: PropTypes.string,
-  workspaceIndex: PropTypes.number
-}
+export default PrimitiveDetails
