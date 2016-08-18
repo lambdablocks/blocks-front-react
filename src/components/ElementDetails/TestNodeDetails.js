@@ -40,7 +40,7 @@ const TestNodeDetails = React.createClass({
           type={type}
           workspaceIndex={workspaceIndex}
         />
-        {type != 'null' &&
+        {type !== 'null' &&
           <div className='topMargin'>
             <CustomValueInput
               closeDialog={closeDialog}
