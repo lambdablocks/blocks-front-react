@@ -1,4 +1,14 @@
+# modules and dependencies
 node_modules/
-npm-debug.log
+
+# log files
+*.log
+
+# auto-saved files
+*.swp
+*~
+
+# bundled files
 dist/app.js
 dist/tutorial/app.js
+
