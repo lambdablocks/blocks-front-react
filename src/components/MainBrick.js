@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 import { Group } from 'react-art'
 import Rectangle from 'react-art/lib/Rectangle.art'
 
@@ -32,7 +32,7 @@ const MainBrick = React.createClass({
     workspaceIndex: PropTypes.number.isRequired
   },
 
-  render() {
+  render () {
     const {
       componentName,
       handleClick,
@@ -48,48 +48,48 @@ const MainBrick = React.createClass({
     const slotHeight = getConstant(componentName, 'slotHeight')
 
     return (
-      <Group y={ slotHeight } >
-        { testInputs.map((element) => {
-            return (
-              <TestInput
-                key={ element.id }
-                workspaceIndex={ workspaceIndex }
-                binding={ unitTest.values[element.valueId] || {} }
-                { ...element }
-              />
-            )
-          })
+      <Group y={slotHeight} >
+        {testInputs.map((element) => {
+          return (
+            <TestInput
+              key={element.id}
+              workspaceIndex={workspaceIndex}
+              binding={unitTest.values[element.valueId] || {}}
+              {...element}
+            />
+          )
+        })
         }
         <Rectangle
-          height={ size.height }
-          width={ size.width }
-          stroke={ getConstant(componentName, 'strokeColor') }
-          fill={ getConstant(componentName, 'fillColor') }
-          onClick={ (e) => handleClick(id, e, workspaceIndex) }
+          height={size.height}
+          width={size.width}
+          stroke={getConstant(componentName, 'strokeColor')}
+          fill={getConstant(componentName, 'fillColor')}
+          onClick={(e) => handleClick(id, e, workspaceIndex)}
         />
-        { inner.map((element) => {
-            const ReactComponent = getComponent(element.componentName)
+        {inner.map((element) => {
+          const ReactComponent = getComponent(element.componentName)
 
-            return (
-              <ReactComponent
-                key={ element.id }
-                selectedSlots={ selectedSlots }
-                binding={ unitTest.values[element.valueId] || {} }
-                { ...element }
-              />
-            )
-          })
+          return (
+            <ReactComponent
+              key={element.id}
+              selectedSlots={selectedSlots}
+              binding={unitTest.values[element.valueId] || {}}
+              {...element}
+            />
+          )
+        })
         }
-        { testOutputs.map((element) => {
-            return (
-              <TestOutput
-                key={ element.id }
-                workspaceIndex={ workspaceIndex }
-                binding={ unitTest.values[element.valueId] || {} }
-                { ...element }
-              />
-            )
-          })
+        {testOutputs.map((element) => {
+          return (
+            <TestOutput
+              key={element.id}
+              workspaceIndex={workspaceIndex}
+              binding={unitTest.values[element.valueId] || {}}
+              {...element}
+            />
+          )
+        })
         }
       </Group>
     )

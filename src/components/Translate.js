@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 
 import { getMessage } from '../utils/translationUtils'
 
@@ -22,8 +22,8 @@ const Translate = React.createClass({
     const { locale } = this.context
 
     return (
-      <HtmlElement { ...childProps } >
-        { getMessage(locale, message) }
+      <HtmlElement {...childProps} >
+        {getMessage(locale, message)}
       </HtmlElement>
     )
   }

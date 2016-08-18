@@ -85,7 +85,7 @@ export const newBrick = (brick, parentId) => {
   const elementId = nextId()
   const outputSlotId = nextId()
 
-  for(var i=0; i < arity; i++) {
+  for (var i = 0; i < arity; i++) {
     const id = nextId()
 
     inputSlots[id] = {
@@ -129,7 +129,7 @@ const newMainBrick = (mainBrickId, workspaceType = UNIT_TEST) => {
     workspaceType
   }
 
-  if(workspaceType != CLEAN) {
+  if (workspaceType != CLEAN) {
     const inputSlotIds = [nextId(), nextId()]
     const outputSlotId = nextId()
 
@@ -194,7 +194,7 @@ export const newPipe = (payload) => {
     id: nextId(),
     input,
     output,
-    type: "null",
+    type: 'null',
     valueId: input.slotId
   }
 }
@@ -207,7 +207,7 @@ export const newTestInputs = (mainBrick) => {
     inputSlotPosition
   )
 
-  for(var id in testInputs) {
+  for (var id in testInputs) {
     const testInput = testInputs[id]
 
     testInput.outputSlots = {
@@ -234,7 +234,7 @@ export const newTestOutputs = (mainBrick) => {
 const _newTestNodes = (mainBrick, componentName, slots, slotPosition) => {
   let testNodes = {}
 
-  for(var id in slots) {
+  for (var id in slots) {
     const slot = slots[id]
 
     testNodes[id] = {
@@ -242,7 +242,7 @@ const _newTestNodes = (mainBrick, componentName, slots, slotPosition) => {
       id: slot.id,
       slotPosition: slotPosition(mainBrick, slot.id),
       size: Defaults[componentName].size,
-      type: "null",
+      type: 'null',
       valueId: slot.id
     }
   }

@@ -43,8 +43,8 @@ export const addUnitTestToWorkspace = (workspace) => {
   const values = workspace.unitTests[0].values
   let newValues = {}
 
-  for(let elementId in values) {
-    if(values[elementId].componentName == PRIMITIVE)
+  for (let elementId in values) {
+    if (values[elementId].componentName == PRIMITIVE)
       newValues[elementId] = values[elementId]
   }
 
@@ -87,11 +87,11 @@ export const removeElementInWorkspace = (workspace, payload) => {
   let newEntities = {}
   let removedKeys = []
 
-  for(let key in entities) {
+  for (let key in entities) {
     const element = entities[key]
 
     // Skip if key is the elementId or is a pipe connected to this elementId
-    if(!(key == elementId || pipeConnectedToElement(element, elementId))) {
+    if (!(key == elementId || pipeConnectedToElement(element, elementId))) {
       newEntities[key] = element
     } else {
       removedKeys.push(key)
@@ -100,8 +100,8 @@ export const removeElementInWorkspace = (workspace, payload) => {
 
   const newUnitTests = workspace.unitTests.map((unitTest) => {
     let newValues = {}
-    for(let key in unitTest.values) {
-      if(removedKeys.indexOf(key) === -1)
+    for (let key in unitTest.values) {
+      if (removedKeys.indexOf(key) === -1)
         newValues[key] = unitTest.values[key]
     }
     return {

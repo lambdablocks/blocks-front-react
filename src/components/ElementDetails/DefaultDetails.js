@@ -3,7 +3,7 @@ import React, { PropTypes, Component } from 'react'
 import DialogButton from './DialogButton'
 
 export default class DefaultDetails extends Component {
-  render() {
+  render () {
     const {
       deleteElement,
       id
@@ -11,8 +11,8 @@ export default class DefaultDetails extends Component {
 
     return (
       <DialogButton
-        onClick={ () => deleteElement(id) }
-        message="delete"
+        onClick={() => deleteElement(id)}
+        message='delete'
       />
     )
   }

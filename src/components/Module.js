@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 
 const Module = React.createClass({
   propTypes: {
@@ -26,23 +26,25 @@ const Module = React.createClass({
     return (
       <div>
         <h4>
-          { label }
+          {label}
         </h4>
         <ul>
-          { functions.map((libraryFunction) => {
-              return (
-                <li
-                  key={ libraryFunction.id }
-                  onClick={ () => onFunctionClick(name, libraryFunction) }
-                  title={ libraryFunction.title }
-                >
-                  { libraryFunction.label }
-                </li>
-              )
-            }
+          {functions.map((libraryFunction) => {
+            return (
+              <li
+                key={libraryFunction.id}
+                onClick={() => onFunctionClick(name, libraryFunction)}
+                title={libraryFunction.title}
+              >
+              {libraryFunction.label}
+              </li>
+            )
+          }
           )}
         </ul>
       </div>
     )
   }
 })
+
+export default Module

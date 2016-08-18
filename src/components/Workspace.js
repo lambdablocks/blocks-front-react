@@ -1,9 +1,8 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 import throttle from 'lodash.throttle'
 
 import { UNIT_TEST } from './constants'
 import { isNotEmpty } from '../utils'
-import { PositionPropTypes } from '../propTypes'
 
 import SelectedElementDialog from '../containers/SelectedElementDialog'
 import TestSummary from './TestSummary'
@@ -65,49 +64,48 @@ const Workspace = React.createClass({
       handleMouseUp = (e) => {
         selectElementOrStopDrag({ x: e.pageX, y: e.pageY })
       }
-    }
-    else {
+    } else {
       handleMouseMove = () => {}
       handleMouseUp = () => {}
     }
 
     return (
       <div
-        id="workspace"
-        onMouseMove={ throttle(handleMouseMove, 20) }
-        onMouseUp={ handleMouseUp }
-        style={ styles }
+        id='workspace'
+        onMouseMove={throttle(handleMouseMove, 20)}
+        onMouseUp={handleMouseUp}
+        style={styles}
       >
         <div>
           <Translate
-            childProps={ { style: workspaceHeaderStyles } }
-            HtmlElement="h2"
-            message="workspace"
+            childProps={{ style: workspaceHeaderStyles }}
+            HtmlElement='h2'
+            message='workspace'
           />
-          { type == UNIT_TEST && <TestSummary unitTests={ unitTests } /> }
-          <a href="https://github.com/lambdabricks/bricks-front-react">
+          {type === UNIT_TEST && <TestSummary unitTests={unitTests} />}
+          <a href='https://github.com/lambdabricks/bricks-front-react'>
             <img
-              className="github-logo"
-              src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+              className='github-logo'
+              src='https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg'
             />
           </a>
         </div>
-        <div style={ workspacesStyles} >
-          { unitTests.map((unitTest, index) => {
-              return (
-                <WorkspaceSurface
-                  index={ index }
-                  key={ index }
-                  mainBrick={ mainBrick }
-                  selectedSlots={ selectedSlots }
-                  unitTest={ unitTest }
-                />
-              )
-            })
+        <div style={workspacesStyles} >
+          {unitTests.map((unitTest, index) => {
+            return (
+              <WorkspaceSurface
+                index={index}
+                key={index}
+                mainBrick={mainBrick}
+                selectedSlots={selectedSlots}
+                unitTest={unitTest}
+              />
+            )
+          })
           }
         </div>
-        { isNotEmpty(selectedElement) &&
-          <SelectedElementDialog { ...selectedElement } />
+        {isNotEmpty(selectedElement) &&
+          <SelectedElementDialog {...selectedElement} />
         }
       </div>
     )

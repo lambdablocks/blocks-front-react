@@ -5,7 +5,6 @@ import {
   PRIMITIVE,
   SELECTABLE_PIPE,
   SLOT,
-  SURFACE,
   TEST_INPUT,
   TEST_OUTPUT,
   TEST_RESULT
@@ -14,15 +13,15 @@ import {
 import { ERROR } from '../utils/evalUtils'
 
 export const colors = {
-  boolean: "#8A2BE2",
+  boolean: '#8A2BE2',
   [ERROR]: '#D80000',
-  false: "#E44B37",
-  list: "#E96859",
-  null: "#BFBFBF",
-  number: "#E9E759",
-  string: "#E9A559",
-  true: "#358DE2",
-  undefined: "#d8d8d8"
+  false: '#E44B37',
+  list: '#E96859',
+  null: '#BFBFBF',
+  number: '#E9E759',
+  string: '#E9A559',
+  true: '#358DE2',
+  undefined: '#d8d8d8'
 }
 
 export const testColors = {

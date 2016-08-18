@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 import { Surface } from 'react-art'
 
 import MainBrick from '../containers/MainBrick'
@@ -20,7 +20,7 @@ const WorkspaceSurface = React.createClass({
     unitTest: PropTypes.object.isRequired
   },
 
-  render() {
+  render () {
     const {
       index,
       mainBrick,
@@ -30,22 +30,22 @@ const WorkspaceSurface = React.createClass({
 
     return (
       <div
-       style={workspaceSurfaceStyles}
+        style={workspaceSurfaceStyles}
       >
         <Surface
-          height={ 600 }
-          style={ surfaceStyles }
-          width={ mainBrick.size.width + mainBrick.position.x * 2 }
+          height={600}
+          style={surfaceStyles}
+          width={mainBrick.size.width + mainBrick.position.x * 2}
         >
           <TestResult
-            mainBrick={ mainBrick }
-            unitTest={ unitTest }
+            mainBrick={mainBrick}
+            unitTest={unitTest}
           />
           <MainBrick
-            selectedSlots={ selectedSlots }
-            unitTest={ unitTest }
-            workspaceIndex={ index }
-            { ...mainBrick }
+            selectedSlots={selectedSlots}
+            unitTest={unitTest}
+            workspaceIndex={index}
+            {...mainBrick}
           />
         </Surface>
       </div>

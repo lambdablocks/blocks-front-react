@@ -7,7 +7,7 @@ import {
 import Translate from '../Translate'
 
 export default class TypesSelect extends Component {
-  render() {
+  render () {
     const {
       handleChange,
       id,
@@ -19,32 +19,32 @@ export default class TypesSelect extends Component {
     return (
       <div>
         <Translate
-          HtmlElement="label"
-          message="type"
+          HtmlElement='label'
+          message='type'
         />
         <select
-          value={ type }
-          onChange={ (e) => handleChange(id, e, workspaceIndex) }
+          value={type}
+          onChange={(e) => handleChange(id, e, workspaceIndex)}
         >
-          { /* TestInput 'type' will be 'null' by default */ }
+          {}
           <Translate
-            childProps={ { disabled: true, value: "null" } }
-            HtmlElement="option"
-            message="empty"
+            childProps={{ disabled: true, value: 'null' }}
+            HtmlElement='option'
+            message='empty'
           />
 
-          { Object.keys(primitives).map((key) => {
-              const primitive = primitives[key]
+          {Object.keys(primitives).map((key) => {
+            const primitive = primitives[key]
 
-              return (
+            return (
                 <option
-                  key={ primitive.id }
-                  value={ primitive.type }
+                  key={primitive.id}
+                  value={primitive.type}
                 >
-                  { primitive.label }
+                  {primitive.label}
                 </option>
               )
-            }
+          }
           )}
         </select>
       </div>

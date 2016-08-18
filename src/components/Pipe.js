@@ -1,5 +1,5 @@
-import React, { PropTypes, Component } from 'react'
-import { Group, Path, Shape } from 'react-art'
+import React, { PropTypes } from 'react'
+import { Path, Shape } from 'react-art'
 
 import { getConstant } from './constants'
 import { PIPE } from '../utils/componentNames'
@@ -18,8 +18,7 @@ const Pipe = React.createClass({
       inputPosition,
       fillColor,
       strokeColor,
-      outputPosition,
-      type
+      outputPosition
     } = this.props
     const componentName = PIPE
     const slotHeight = getConstant(componentName, 'slotHeight')
@@ -39,9 +38,9 @@ const Pipe = React.createClass({
 
     return (
       <Shape
-        d={ path }
-        fill={ fillColor }
-        stroke={ strokeColor }
+        d={path}
+        fill={fillColor}
+        stroke={strokeColor}
       />
     )
   }

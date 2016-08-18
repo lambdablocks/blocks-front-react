@@ -3,7 +3,7 @@ import React, { PropTypes, Component } from 'react'
 import DialogButton from './DialogButton'
 
 export default class MainBrickDetails extends Component {
-  render() {
+  render () {
     const {
       addUnitTest,
       deleteUnitTest,
@@ -15,15 +15,15 @@ export default class MainBrickDetails extends Component {
       <div>
         <div>
           <DialogButton
-            onClick={ addUnitTest }
-            message="addUnitTest"
+            onClick={addUnitTest}
+            message='addUnitTest'
           />
         </div>
-        { totalUnitTests > 1 &&
-          <div className="topMargin">
+        {totalUnitTests > 1 &&
+          <div className='topMargin'>
             <DialogButton
-              onClick={ () => deleteUnitTest(workspaceIndex) }
-              message="deleteUnitTest"
+              onClick={() => deleteUnitTest(workspaceIndex)}
+              message='deleteUnitTest'
             />
           </div>
         }

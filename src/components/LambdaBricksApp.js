@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 
 import { UNIT_TEST } from './constants'
 import Library from '../containers/Library'
@@ -6,7 +6,7 @@ import Logo from './Logo'
 import Workspace from '../containers/Workspace'
 
 const LambdaBricksApp = React.createClass({
-  getChildContext() {
+  getChildContext () {
     return {
       locale: 'en'
     }
@@ -26,11 +26,11 @@ const LambdaBricksApp = React.createClass({
     workspaceType: PropTypes.string.isRequired
   },
 
-  render() {
+  render () {
     return (
       <div className='app'>
         <Logo />
-        <Library id={this.props.libraryId}/>
+        <Library id={this.props.libraryId} />
         <Workspace type={this.props.workspaceType} />
       </div>
     )

@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 import Rectangle from 'react-art/lib/Rectangle.art'
 
 import { getTestResultColor } from '../utils/unitTestUtils'
@@ -30,11 +30,11 @@ const TestResult = React.createClass({
 
     return (
       <Rectangle
-        fill={ getTestResultColor(unitTest) }
-        height={ mainBrick.size.height + (delta * 2) }
-        x={ mainBrick.position.x - delta }
-        y={ mainBrick.position.y - delta + slotHeight }
-        width={ mainBrick.size.width + (delta * 2) }
+        fill={getTestResultColor(unitTest)}
+        height={mainBrick.size.height + (delta * 2)}
+        x={mainBrick.position.x - delta}
+        y={mainBrick.position.y - delta + slotHeight}
+        width={mainBrick.size.width + (delta * 2)}
       />
     )
   }
