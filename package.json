@@ -56,6 +56,8 @@
     "webpack-dev-server": "1.14.1"
   },
   "scripts": {
-    "start": "watchify --extension=js -o dist/app.js src/index.js & watchify --extension=js -o dist/tutorial/app.js src/tutorial-index.js & http-server dist"
+    "start": "watchify --extension=js -o dist/app.js src/index.js & watchify --extension=js -o dist/tutorial/app.js src/tutorial-index.js & http-server dist",
+    "webpack": "webpack --progress --production",
+    "webpack-dev": "webpack-dev-server --content-base dist"
   }
 }
