@@ -82,13 +82,13 @@ const MainBrick = React.createClass({
         }
         {testOutputs.map((element) => {
           return (
-              <TestOutput
-                key={element.id}
-                workspaceIndex={workspaceIndex}
-                binding={unitTest.values[element.valueId] || {}}
-                {...element}
-              />
-            )
+            <TestOutput
+              key={element.id}
+              workspaceIndex={workspaceIndex}
+              binding={unitTest.values[element.valueId] || {}}
+              {...element}
+            />
+          )
         })
         }
       </Group>

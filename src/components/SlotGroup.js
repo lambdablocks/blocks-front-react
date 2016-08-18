@@ -1,6 +1,5 @@
-import React, { PropType } from 'react'
+import React, { PropTypes } from 'react'
 import { Group } from 'react-art'
-import Rectangle from 'react-art/lib/Rectangle.art'
 
 import { getConstant } from './constants'
 import { SlotPropTypes } from '../propTypes'
@@ -42,18 +41,18 @@ const SlotGroup = React.createClass({
           const x = slotOffset + (slot.index * slotAndOffset)
 
           return (
-              <Slot
-                key={slot.id}
-                fillColor={getConstant(componentName, 'fillColor')}
-                id={slot.id}
-                parentId={parentId}
-                selectedSlots={selectedSlots}
-                selectSlot={selectSlot}
-                strokeColor={getConstant(componentName, 'strokeColor')}
-                x={x}
-                y={0}
-              />
-            )
+            <Slot
+              key={slot.id}
+              fillColor={getConstant(componentName, 'fillColor')}
+              id={slot.id}
+              parentId={parentId}
+              selectedSlots={selectedSlots}
+              selectSlot={selectSlot}
+              strokeColor={getConstant(componentName, 'strokeColor')}
+              x={x}
+              y={0}
+            />
+          )
         })
         }
       </Group>

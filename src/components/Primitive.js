@@ -30,7 +30,6 @@ const Primitive = React.createClass({
       componentName,
       binding,
       id,
-      handleMouseDown,
       position,
       selectedSlots,
       selectSlot,

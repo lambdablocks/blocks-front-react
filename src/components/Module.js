@@ -31,14 +31,14 @@ const Module = React.createClass({
         <ul>
           {functions.map((libraryFunction) => {
             return (
-                <li
-                  key={libraryFunction.id}
-                  onClick={() => onFunctionClick(name, libraryFunction)}
-                  title={libraryFunction.title}
-                >
-                  {libraryFunction.label}
-                </li>
-              )
+              <li
+                key={libraryFunction.id}
+                onClick={() => onFunctionClick(name, libraryFunction)}
+                title={libraryFunction.title}
+              >
+              {libraryFunction.label}
+              </li>
+            )
           }
           )}
         </ul>
@@ -46,3 +46,5 @@ const Module = React.createClass({
     )
   }
 })
+
+export default Module

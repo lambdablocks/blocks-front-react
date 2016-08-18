@@ -30,9 +30,9 @@ const Slot = React.createClass({
     } = this.props
     const componentName = SLOT
 
-    const fillColor = isSlotSelected(selectedSlots, id) ?
-      getConstant(componentName, 'fillColor') :
-      unselectedFillColor
+    const fillColor = isSlotSelected(selectedSlots, id)
+      ? getConstant(componentName, 'fillColor')
+      : unselectedFillColor
 
     return (
       <Rectangle

@@ -3,7 +3,6 @@ import throttle from 'lodash.throttle'
 
 import { UNIT_TEST } from './constants'
 import { isNotEmpty } from '../utils'
-import { PositionPropTypes } from '../propTypes'
 
 import SelectedElementDialog from '../containers/SelectedElementDialog'
 import TestSummary from './TestSummary'
@@ -65,8 +64,7 @@ const Workspace = React.createClass({
       handleMouseUp = (e) => {
         selectElementOrStopDrag({ x: e.pageX, y: e.pageY })
       }
-    }
-    else {
+    } else {
       handleMouseMove = () => {}
       handleMouseUp = () => {}
     }
@@ -84,7 +82,7 @@ const Workspace = React.createClass({
             HtmlElement='h2'
             message='workspace'
           />
-          {type == UNIT_TEST && <TestSummary unitTests={unitTests} />}
+          {type === UNIT_TEST && <TestSummary unitTests={unitTests} />}
           <a href='https://github.com/lambdabricks/bricks-front-react'>
             <img
               className='github-logo'
@@ -95,14 +93,14 @@ const Workspace = React.createClass({
         <div style={workspacesStyles} >
           {unitTests.map((unitTest, index) => {
             return (
-                <WorkspaceSurface
-                  index={index}
-                  key={index}
-                  mainBrick={mainBrick}
-                  selectedSlots={selectedSlots}
-                  unitTest={unitTest}
-                />
-              )
+              <WorkspaceSurface
+                index={index}
+                key={index}
+                mainBrick={mainBrick}
+                selectedSlots={selectedSlots}
+                unitTest={unitTest}
+              />
+            )
           })
           }
         </div>

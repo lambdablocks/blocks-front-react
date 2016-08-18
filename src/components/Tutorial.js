@@ -12,7 +12,7 @@ import Logo from './Logo'
 import Translate from './Translate'
 import Workspace from '../containers/Workspace'
 
-export default const Tutorial = React.createClass({
+const Tutorial = React.createClass({
   /*!
    * Required stuff
    */
@@ -38,32 +38,32 @@ export default const Tutorial = React.createClass({
       showStepsProgress: false,
       joyrideSteps: [
         {
-          text: getMessage(props.locale, 'joyrideSteps.window'),
+          text: getMessage(this.props.locale, 'joyrideSteps.window'),
           selector: '#window',
           position: 'top'
         },
         {
-          text: getMessage(props.locale, 'joyrideSteps.library'),
+          text: getMessage(this.props.locale, 'joyrideSteps.library'),
           selector: '#library',
           position: 'right'
         },
         {
-          text: getMessage(props.locale, 'joyrideSteps.constants'),
+          text: getMessage(this.props.locale, 'joyrideSteps.constants'),
           selector: '#constants',
           position: 'right'
         },
         {
-          text: getMessage(props.locale, 'joyrideSteps.functions'),
+          text: getMessage(this.props.locale, 'joyrideSteps.functions'),
           selector: '#functions',
           position: 'right'
         },
         {
-          text: getMessage(props.locale, 'joyrideSteps.workspace'),
+          text: getMessage(this.props.locale, 'joyrideSteps.workspace'),
           selector: '#workspace',
           position: 'left'
         },
         {
-          text: getMessage(props.locale, 'joyrideSteps.tutorial'),
+          text: getMessage(this.props.locale, 'joyrideSteps.tutorial'),
           selector: '#instructions',
           position: 'right'
         }
@@ -87,56 +87,56 @@ export default const Tutorial = React.createClass({
    * Lyfe-cycle events
    */
 
-  componentDidMount() {
+  componentDidMount () {
     this.setState({
       ready: getTutorialConfig(this.props.step).openSiteTourAtStart
     })
   },
 
-  componentDidUpdate(prevProps, prevState) {
-    if(!prevState.ready && this.state.ready) {
+  componentDidUpdate (prevProps, prevState) {
+    if (!prevState.ready && this.state.ready) {
       this.refs.joyride.start(true)
     }
   },
 
-  render() {
+  render () {
     const { locale, step } = this.props
     const nextStep = step + 1
     const tutorialConfig = getTutorialConfig(step)
     const state = this.state
 
     return (
-      <div className="tutorial app" id="window">
+      <div className='tutorial app' id='window'>
         <Logo />
-        <div id="instructions">
+        <div id='instructions'>
           <Translate
-            HtmlElement="h2"
-            message="tutorial"
+            HtmlElement='h2'
+            message='tutorial'
           />
-          <h3>{ step } / { totalSteps() }</h3>
+          <h3>{step} / {totalSteps()}</h3>
           <div
-            dangerouslySetInnerHTML={
-              { __html: getMessage(locale, `tutorialSteps.${step}`) }
-            }
+            dangerouslySetInnerHTML={{ __html: getMessage(locale, `tutorialSteps.${step}`) }}
           />
-          { getMessage(locale, `tutorialSteps.${nextStep}`) && <Translate
-            HtmlElement="a"
-            childProps={ { href: `./?step=${nextStep}` } }
-            message="next"
-          /> }
+          {getMessage(locale, `tutorialSteps.${nextStep}`) && <Translate
+            HtmlElement='a'
+            childProps={{ href: `./?step=${nextStep}` }}
+            message='next'
+          />}
         </div>
-        <Library id={ tutorialConfig.libraryId } />
-        <Workspace type={ tutorialConfig.worspaceType } />
+        <Library id={tutorialConfig.libraryId} />
+        <Workspace type={tutorialConfig.worspaceType} />
         <JoyRide
-          ref="joyride"
-          debug={ false }
-          steps={ state.joyrideSteps }
-          type={ state.joyrideType }
-          showSkipButton={ false }
-          showStepsProgress={ state.showStepsProgress }
-          showOverlay={ state.joyrideOverlay }
+          ref='joyride'
+          debug={false}
+          steps={state.joyrideSteps}
+          type={state.joyrideType}
+          showSkipButton={false}
+          showStepsProgress={state.showStepsProgress}
+          showOverlay={state.joyrideOverlay}
         />
       </div>
     )
   }
 })
+
+export default Tutorial
