@@ -45,19 +45,18 @@ const TypesSelect = React.createClass({
             const primitive = primitives[key]
 
             return (
-                <option
-                  key={primitive.id}
-                  value={primitive.type}
-                >
-                  {primitive.label}
-                </option>
-              )
+              <option
+                key={primitive.id}
+                value={primitive.type}
+              >
+              {primitive.label}
+              </option>
+            )
           }
           )}
         </select>
       </div>
     )
-
   }
 })
 

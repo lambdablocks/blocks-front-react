@@ -26,7 +26,7 @@ const CustomValueInput = React.createClass({
   },
 
   closeOnEnterKeyDown (e) {
-    if (e.key == 'Enter') {
+    if (e.key === 'Enter') {
       this.props.closeDialog()
     }
   },
@@ -53,7 +53,7 @@ const CustomValueInput = React.createClass({
                 name='inputWithOptions'
                 type='radio'
                 value={primitiveValue.name}
-                checked={primitiveValue.name == value}
+                checked={primitiveValue.name === value}
               />
               <label
                 htmlFor={primitiveValue.name}
@@ -66,7 +66,7 @@ const CustomValueInput = React.createClass({
         </span>
       )
     } else {
-      const inputType = type == 'number' ? type : 'text'
+      const inputType = type === 'number' ? type : 'text'
 
       return (
         <input
