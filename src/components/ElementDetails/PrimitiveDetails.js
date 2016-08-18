@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 
 import {
   PrimitivePropTypes
@@ -7,8 +7,19 @@ import {
 import CustomValueInput from './CustomValueInput'
 import DialogButton from './DialogButton'
 
-export default class PrimitiveDetails extends Component {
-  render() {
+const PrimitiveDetails = React.createClass({
+  propTypes: {
+    deleteElement: PropTypes.func.isRequired,
+    changePrimitiveValue: PropTypes.func.isRequired,
+    closeDialog: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired,
+    primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,
+    type: PropTypes.string.isRequired,
+    value: PropTypes.string,
+    workspaceIndex: PropTypes.number
+  },
+
+  render () {
     const {
       changePrimitiveValue,
       closeDialog,
@@ -23,31 +34,22 @@ export default class PrimitiveDetails extends Component {
     return (
       <div>
         <CustomValueInput
-          closeDialog={ closeDialog }
-          handleChange={ changePrimitiveValue }
-          id={ id }
-          primitives={ primitives }
-          type={ type }
-          value={ value }
-          workspaceIndex={ workspaceIndex }
+          closeDialog={closeDialog}
+          handleChange={changePrimitiveValue}
+          id={id}
+          primitives={primitives}
+          type={type}
+          value={value}
+          workspaceIndex={workspaceIndex}
         />
-        <hr/>
+        <hr />
         <DialogButton
-          onClick={ () => deleteElement(id) }
-          message="delete"
+          onClick={() => deleteElement(id)}
+          message='delete'
         />
       </div>
     )
   }
-}
+})
 
-PrimitiveDetails.propTypes = {
-  deleteElement: PropTypes.func.isRequired,
-  changePrimitiveValue: PropTypes.func.isRequired,
-  closeDialog: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
-  primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,
-  type: PropTypes.string.isRequired,
-  value: PropTypes.string,
-  workspaceIndex: PropTypes.number
-}
+export default PrimitiveDetails

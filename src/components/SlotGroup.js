@@ -1,14 +1,23 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 import { Group } from 'react-art'
-import Rectangle from 'react-art/lib/Rectangle.art'
 
 import { getConstant } from './constants'
 import { SlotPropTypes } from '../propTypes'
 
 import Slot from './Slot'
 
-class SlotGroup extends Component {
-  render() {
+const SlotGroup = React.createClass({
+  propTypes: {
+    componentName: PropTypes.string.isRequired,
+    parentId: PropTypes.number.isRequired,
+    parentWidth: PropTypes.number.isRequired,
+    selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
+    selectSlot: PropTypes.func.isRequired,
+    slots: SlotPropTypes.isRequired,
+    y: PropTypes.number.isRequired
+  },
+
+  render () {
     const {
       componentName,
       parentId,
@@ -26,45 +35,35 @@ class SlotGroup extends Component {
     const xOffset = (parentWidth - width) / 2
 
     return (
-      <Group x={ xOffset } y={ y }>
-        { Object.keys(slots).map((slotId, index) => {
-            const slot = slots[slotId]
-            const x = slotOffset + (slot.index * slotAndOffset)
+      <Group x={xOffset} y={y}>
+        {Object.keys(slots).map((slotId, index) => {
+          const slot = slots[slotId]
+          const x = slotOffset + (slot.index * slotAndOffset)
 
-            return (
-              <Slot
-                key={ slot.id }
-                fillColor={ getConstant(componentName, 'fillColor') }
-                id={ slot.id }
-                parentId={ parentId }
-                selectedSlots={ selectedSlots }
-                selectSlot={ selectSlot }
-                strokeColor={ getConstant(componentName, 'strokeColor') }
-                x={ x }
-                y={ 0 }
-              />
-            )
-          })
+          return (
+            <Slot
+              key={slot.id}
+              fillColor={getConstant(componentName, 'fillColor')}
+              id={slot.id}
+              parentId={parentId}
+              selectedSlots={selectedSlots}
+              selectSlot={selectSlot}
+              strokeColor={getConstant(componentName, 'strokeColor')}
+              x={x}
+              y={0}
+            />
+          )
+        })
         }
       </Group>
     )
-  }
+  },
 
-  slotGroupWidth(slots, slotOffset, slotAndOffset) {
+  slotGroupWidth (slots, slotOffset, slotAndOffset) {
     const totalSlots = Object.keys(slots).length
 
     return slotOffset + (totalSlots * slotAndOffset)
   }
-}
-
-SlotGroup.propTypes = {
-  componentName: PropTypes.string.isRequired,
-  parentId: PropTypes.number.isRequired,
-  parentWidth: PropTypes.number.isRequired,
-  selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
-  selectSlot: PropTypes.func.isRequired,
-  slots: SlotPropTypes.isRequired,
-  y: PropTypes.number.isRequired
-}
+})
 
 export default SlotGroup

@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 
 import {
   getDetailsComponent
@@ -9,8 +9,25 @@ import {
   PrimitivePropTypes
 } from '../propTypes'
 
-export default class SelectedElementDialog extends Component {
-  render() {
+const SelectedElementDialog = React.createClass({
+  propTypes: {
+    addUnitTest: PropTypes.func.isRequired,
+    changePrimitiveValue: PropTypes.func.isRequired,
+    changeTestNodeType: PropTypes.func.isRequired,
+    changeTestNodeValue: PropTypes.func.isRequired,
+    closeDialog: PropTypes.func.isRequired,
+    componentName: PropTypes.string.isRequired,
+    deleteElement: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired,
+    mousePosition: PositionPropTypes.isRequired,
+    primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,
+    value: PropTypes.string,
+    totalUnitTests: PropTypes.number.isRequired,
+    type: PropTypes.string,
+    workspaceIndex: PropTypes.number
+  },
+
+  render () {
     const {
       closeDialog,
       componentName,
@@ -21,40 +38,23 @@ export default class SelectedElementDialog extends Component {
 
     return (
       <div
-        className="SelectedElementDialog"
-        style={
-          {
-            left: mousePosition.x,
-            top: mousePosition.y
-          }
-        }
+        className='SelectedElementDialog'
+        style={{
+          left: mousePosition.x,
+          top: mousePosition.y
+        }}
       >
         <a
-          className="closeBtn"
-          href="#"
-          onClick={ closeDialog }
+          className='closeBtn'
+          href='#'
+          onClick={closeDialog}
         >
           x
         </a>
-        <ReactComponent { ...this.props } />
+        <ReactComponent {...this.props} />
       </div>
     )
   }
-}
+})
 
-SelectedElementDialog.propTypes = {
-  addUnitTest: PropTypes.func.isRequired,
-  changePrimitiveValue: PropTypes.func.isRequired,
-  changeTestNodeType: PropTypes.func.isRequired,
-  changeTestNodeValue: PropTypes.func.isRequired,
-  closeDialog: PropTypes.func.isRequired,
-  componentName: PropTypes.string.isRequired,
-  deleteElement: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
-  mousePosition: PositionPropTypes.isRequired,
-  primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,
-  value: PropTypes.string,
-  totalUnitTests: PropTypes.number.isRequired,
-  type: PropTypes.string,
-  workspaceIndex: PropTypes.number
-}
+export default SelectedElementDialog

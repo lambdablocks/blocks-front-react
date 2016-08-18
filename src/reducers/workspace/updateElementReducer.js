@@ -102,7 +102,7 @@ export const linkSlots = (workspace, payload) => {
   let newOutputElementSlots = {}
   let inputElement = workspace.entities[input.elementId]
 
-  if(inputElement.componentName == MAIN_BRICK) {
+  if (inputElement.componentName == MAIN_BRICK) {
     inputElement = workspace.entities[input.slotId]
   }
 
@@ -121,14 +121,14 @@ export const linkSlots = (workspace, payload) => {
     )
   }
 
-  if(outputElement.componentName == BRICK) {
+  if (outputElement.componentName == BRICK) {
     const { inputSlots } = outputElement
 
     newOutputElementSlots = {
       inputSlots: addValueToSlots(inputSlots, input, output)
     }
   }
-  if(outputElement.componentName == MAIN_BRICK) {
+  if (outputElement.componentName == MAIN_BRICK) {
     const { outputSlots } = outputElement
 
     newOutputElementSlots = {
@@ -173,7 +173,7 @@ export const unlinkSlots = (workspace, payload) => {
   const { input, output } = payload
   let inputElement = workspace.entities[input.elementId]
 
-  if(inputElement.componentName == MAIN_BRICK) {
+  if (inputElement.componentName == MAIN_BRICK) {
     inputElement = workspace.entities[input.slotId]
   }
 
@@ -207,8 +207,8 @@ export const unlinkSlots = (workspace, payload) => {
 const _removeSlotValue = (element, output) => {
   var slots = {}
 
-  if(output.slotId) {
-    if(element.componentName == MAIN_BRICK) {
+  if (output.slotId) {
+    if (element.componentName == MAIN_BRICK) {
       Object.assign(slots, { outputSlots: element.outputSlots })
 
       delete slots.outputSlots[output.slotId]['value']
@@ -217,14 +217,14 @@ const _removeSlotValue = (element, output) => {
 
       delete slots.inputSlots[output.slotId]['value']
     }
-  } else if(output.sourceElementId) {
-    if(element.componentName == MAIN_BRICK) {
+  } else if (output.sourceElementId) {
+    if (element.componentName == MAIN_BRICK) {
       Object.assign(slots, { outputSlots: element.outputSlots })
 
       Object.keys(element.outputSlots).forEach((slotId) => {
         const slot = element.outputSlots[slotId]
 
-        if(slot.value && slot.value.elementId == output.sourceElementId) {
+        if (slot.value && slot.value.elementId == output.sourceElementId) {
           delete slots.outputSlots[slotId]['value']
         }
       })
@@ -234,7 +234,7 @@ const _removeSlotValue = (element, output) => {
       Object.keys(element.inputSlots).forEach((slotId) => {
         const slot = element.inputSlots[slotId]
 
-        if(slot.value && slot.value.elementId == output.sourceElementId) {
+        if (slot.value && slot.value.elementId == output.sourceElementId) {
           delete slots.inputSlots[slotId]['value']
         }
       })

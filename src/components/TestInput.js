@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 import { Group, Text } from 'react-art'
 
 import { getConstant } from './constants'
@@ -7,8 +7,17 @@ import { getFillColor } from '../utils'
 import Pipe from './Pipe'
 import { BindingPropTypes, PositionPropTypes } from '../propTypes'
 
-class TestInput extends Component {
-  render() {
+const TestInput = React.createClass({
+  propTypes: {
+    componentName: PropTypes.string.isRequired,
+    binding: BindingPropTypes,
+    handleClick: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired,
+    slotPosition: PositionPropTypes.isRequired,
+    workspaceIndex: PropTypes.number.isRequired
+  },
+
+  render () {
     const {
       componentName,
       binding,
@@ -37,41 +46,32 @@ class TestInput extends Component {
 
     return (
       <Group
-        onClick={ (e) => handleClick(id, e, workspaceIndex) }
-        x={ position.x }
-        y={ position.y }
+        onClick={(e) => handleClick(id, e, workspaceIndex)}
+        x={position.x}
+        y={position.y}
       >
         <Ellipse
-          fillColor={ fillColor }
-          size={ size }
+          fillColor={fillColor}
+          size={size}
         />
         <Text
-          alignment={ getConstant(componentName, 'alignment') }
-          fill={ getConstant(componentName, 'textColor') }
-          font={ getConstant(componentName, 'font') }
-          x={ size.width / 2 }
-          y={ size.height / 2 - 5 }
+          alignment={getConstant(componentName, 'alignment')}
+          fill={getConstant(componentName, 'textColor')}
+          font={getConstant(componentName, 'font')}
+          x={size.width / 2}
+          y={size.height / 2 - 5}
         >
-          { binding.value === undefined ? "<NONE>" : binding.value }
+          {binding.value === undefined ? '<NONE>' : binding.value}
         </Text>
         <Pipe
-          fillColor={ fillColor }
-          inputPosition={ inputPipePosition }
-          outputPosition={ outputPipePosition }
-          strokeColor={ fillColor }
+          fillColor={fillColor}
+          inputPosition={inputPipePosition}
+          outputPosition={outputPipePosition}
+          strokeColor={fillColor}
         />
       </Group>
     )
   }
-}
-
-TestInput.propTypes = {
-  componentName: PropTypes.string.isRequired,
-  binding: BindingPropTypes,
-  handleClick: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
-  slotPosition: PositionPropTypes.isRequired,
-  workspaceIndex: PropTypes.number.isRequired
-}
+})
 
 export default TestInput

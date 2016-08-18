@@ -1,9 +1,19 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 
 import { getMessage } from '../utils/translationUtils'
 
-export default class Translate extends Component {
-  render() {
+const Translate = React.createClass({
+  contextTypes: {
+    locale: PropTypes.string.isRequired
+  },
+
+  propTypes: {
+    childProps: PropTypes.object,
+    HtmlElement: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired
+  },
+
+  render () {
     const {
       childProps,
       HtmlElement,
@@ -12,19 +22,11 @@ export default class Translate extends Component {
     const { locale } = this.context
 
     return (
-      <HtmlElement { ...childProps } >
-        { getMessage(locale, message) }
+      <HtmlElement {...childProps} >
+        {getMessage(locale, message)}
       </HtmlElement>
     )
   }
-}
+})
 
-Translate.contextTypes = {
-  locale: PropTypes.string.isRequired
-}
-
-Translate.propTypes = {
-  childProps: PropTypes.object,
-  HtmlElement: PropTypes.string.isRequired,
-  message: PropTypes.string.isRequired
-}
+export default Translate

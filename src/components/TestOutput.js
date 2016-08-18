@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 import { Group, Text } from 'react-art'
 
 import { getConstant } from './constants'
@@ -7,8 +7,17 @@ import { getFillColor } from '../utils'
 import Pipe from './Pipe'
 import { BindingPropTypes, PositionPropTypes } from '../propTypes'
 
-class TestOutput extends Component {
-  render() {
+const TestOutput = React.createClass({
+  propTypes: {
+    componentName: PropTypes.string.isRequired,
+    binding: BindingPropTypes,
+    handleClick: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired,
+    slotPosition: PositionPropTypes.isRequired,
+    workspaceIndex: PropTypes.number.isRequired
+  },
+
+  render () {
     const {
       componentName,
       binding,
@@ -21,7 +30,7 @@ class TestOutput extends Component {
 
     const fillColor = getFillColor(binding.type, binding.value)
     const position = {
-      x: - ((size.width - getConstant(componentName, 'slotWidth')) / 2),
+      x: -((size.width - getConstant(componentName, 'slotWidth')) / 2),
       y: getConstant(componentName, 'slotHeight') +
         getConstant(componentName, 'yOffset') - size.height
     }
@@ -36,46 +45,37 @@ class TestOutput extends Component {
 
     return (
       <Group
-        onClick={ (e) => handleClick(id, e, workspaceIndex) }
-        x={ slotPosition.x }
-        y={ slotPosition.y }
+        onClick={(e) => handleClick(id, e, workspaceIndex)}
+        x={slotPosition.x}
+        y={slotPosition.y}
       >
         <Group
-          x={ position.x }
-          y={ position.y }
+          x={position.x}
+          y={position.y}
         >
           <Ellipse
-            fillColor={ fillColor }
-            size={ size }
+            fillColor={fillColor}
+            size={size}
           />
           <Text
-            alignment={ getConstant(componentName, 'alignment') }
-            fill={ getConstant(componentName, 'textColor') }
-            font={ getConstant(componentName, 'font') }
-            x={ size.width / 2 }
-            y={ size.height / 2 - 5 }
+            alignment={getConstant(componentName, 'alignment')}
+            fill={getConstant(componentName, 'textColor')}
+            font={getConstant(componentName, 'font')}
+            x={size.width / 2}
+            y={size.height / 2 - 5}
           >
-            { binding.value === undefined ? "<NONE>" : binding.value }
+            {binding.value === undefined ? '<NONE>' : binding.value}
           </Text>
         </Group>
         <Pipe
-          fillColor={ fillColor }
-          inputPosition={ inputPipePosition }
-          outputPosition={ outputPipePosition }
-          strokeColor={ fillColor }
+          fillColor={fillColor}
+          inputPosition={inputPipePosition}
+          outputPosition={outputPipePosition}
+          strokeColor={fillColor}
         />
       </Group>
     )
   }
-}
-
-TestOutput.propTypes = {
-  componentName: PropTypes.string.isRequired,
-  binding: BindingPropTypes,
-  handleClick: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
-  slotPosition: PositionPropTypes.isRequired,
-  workspaceIndex: PropTypes.number.isRequired
-}
+})
 
 export default TestOutput

@@ -1,16 +1,28 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 
 import Module from './Module'
 import { PrimitivePropTypes } from '../propTypes'
 import Translate from './Translate'
 
-export default class Library extends Component {
-  componentDidMount() {
+const Library = React.createClass({
+  propTypes: {
+    fetchLibrary: PropTypes.func.isRequired,
+    id: PropTypes.string.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    items: PropTypes.shape({
+      modules: PropTypes.array,
+      primitives: PropTypes.objectOf(PrimitivePropTypes)
+    }).isRequired,
+    onFunctionClick: PropTypes.func.isRequired,
+    onPrimitiveClick: PropTypes.func.isRequired
+  },
+
+  componentDidMount () {
     const { fetchLibrary, id } = this.props
     fetchLibrary(id)
-  }
+  },
 
-  render() {
+  render () {
     const {
       isFetching,
       items,
@@ -19,50 +31,50 @@ export default class Library extends Component {
     } = this.props
 
     return (
-      <aside id="library">
+      <aside id='library'>
         <Translate
-          HtmlElement="h2"
-          message="library"
+          HtmlElement='h2'
+          message='library'
         />
-        { isFetching &&
+        {isFetching &&
           <Translate
-            HtmlElement="h3"
-            message="loading"
+            HtmlElement='h3'
+            message='loading'
           />
         }
-        { !isFetching && items.primitives &&
-          <div className="nav">
-            <div id="constants">
+        {!isFetching && items.primitives &&
+          <div className='nav'>
+            <div id='constants'>
               <Translate
-                HtmlElement="h3"
-                message="constants"
+                HtmlElement='h3'
+                message='constants'
               />
               <ul>
-                { Object.keys(items.primitives).map((key) => {
-                    const primitive = items.primitives[key]
+                {Object.keys(items.primitives).map((key) => {
+                  const primitive = items.primitives[key]
 
-                    return (
-                      <li
-                        key={ primitive.id }
-                        onClick={ () => onPrimitiveClick(primitive.type) }
-                      >
-                        {primitive.label}
-                      </li>
-                    )
-                  }
+                  return (
+                    <li
+                      key={primitive.id}
+                      onClick={() => onPrimitiveClick(primitive.type)}
+                    >
+                    {primitive.label}
+                    </li>
+                  )
+                }
                 )}
               </ul>
             </div>
-            <div id="functions">
+            <div id='functions'>
               <Translate
-                HtmlElement="h3"
-                message="functions"
+                HtmlElement='h3'
+                message='functions'
               />
-              { items.modules.map((module) =>
+              {items.modules.map((module) =>
                 <Module
-                  key={ module.name }
-                  onFunctionClick={ onFunctionClick }
-                  { ...module }
+                  key={module.name}
+                  onFunctionClick={onFunctionClick}
+                  {...module}
                 />
               )}
             </div>
@@ -71,16 +83,6 @@ export default class Library extends Component {
       </aside>
     )
   }
-}
+})
 
-Library.propTypes = {
-  fetchLibrary: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
-  isFetching: PropTypes.bool.isRequired,
-  items: PropTypes.shape({
-    modules: PropTypes.array,
-    primitives: PropTypes.objectOf(PrimitivePropTypes)
-  }).isRequired,
-  onFunctionClick: PropTypes.func.isRequired,
-  onPrimitiveClick: PropTypes.func.isRequired
-}
+export default Library

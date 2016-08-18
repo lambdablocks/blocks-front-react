@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes } from 'react'
 import { Group } from 'react-art'
 import Rectangle from 'react-art/lib/Rectangle.art'
 
@@ -10,8 +10,29 @@ import { PositionPropTypes, SizePropTypes } from '../propTypes'
 import TestInput from '../containers/TestInput'
 import TestOutput from '../containers/TestOutput'
 
-class MainBrick extends Component {
-  render() {
+const MainBrick = React.createClass({
+  propTypes: {
+    componentName: PropTypes.string.isRequired,
+    handleClick: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired,
+    inner: PropTypes.arrayOf(
+      PropTypes.shape({
+        componentName: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string,
+        position: PositionPropTypes,
+        value: PropTypes.any
+      })
+    ).isRequired,
+    selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
+    size: SizePropTypes.isRequired,
+    testInputs: PropTypes.arrayOf(PropTypes.object).isRequired,
+    testOutputs: PropTypes.arrayOf(PropTypes.object).isRequired,
+    unitTest: PropTypes.object.isRequired,
+    workspaceIndex: PropTypes.number.isRequired
+  },
+
+  render () {
     const {
       componentName,
       handleClick,
@@ -27,73 +48,52 @@ class MainBrick extends Component {
     const slotHeight = getConstant(componentName, 'slotHeight')
 
     return (
-      <Group y={ slotHeight } >
-        { testInputs.map((element) => {
-            return (
-              <TestInput
-                key={ element.id }
-                workspaceIndex={ workspaceIndex }
-                binding={ unitTest.values[element.valueId] || {} }
-                { ...element }
-              />
-            )
-          })
+      <Group y={slotHeight} >
+        {testInputs.map((element) => {
+          return (
+            <TestInput
+              key={element.id}
+              workspaceIndex={workspaceIndex}
+              binding={unitTest.values[element.valueId] || {}}
+              {...element}
+            />
+          )
+        })
         }
         <Rectangle
-          height={ size.height }
-          width={ size.width }
-          stroke={ getConstant(componentName, 'strokeColor') }
-          fill={ getConstant(componentName, 'fillColor') }
-          onClick={ (e) => handleClick(id, e, workspaceIndex) }
+          height={size.height}
+          width={size.width}
+          stroke={getConstant(componentName, 'strokeColor')}
+          fill={getConstant(componentName, 'fillColor')}
+          onClick={(e) => handleClick(id, e, workspaceIndex)}
         />
-        { inner.map((element) => {
-            const ReactComponent = getComponent(element.componentName)
+        {inner.map((element) => {
+          const ReactComponent = getComponent(element.componentName)
 
-            return (
-              <ReactComponent
-                key={ element.id }
-                selectedSlots={ selectedSlots }
-                binding={ unitTest.values[element.valueId] || {} }
-                { ...element }
-              />
-            )
-          })
+          return (
+            <ReactComponent
+              key={element.id}
+              selectedSlots={selectedSlots}
+              binding={unitTest.values[element.valueId] || {}}
+              {...element}
+            />
+          )
+        })
         }
-        { testOutputs.map((element) => {
-            return (
-              <TestOutput
-                key={ element.id }
-                workspaceIndex={ workspaceIndex }
-                binding={ unitTest.values[element.valueId] || {} }
-                { ...element }
-              />
-            )
-          })
+        {testOutputs.map((element) => {
+          return (
+            <TestOutput
+              key={element.id}
+              workspaceIndex={workspaceIndex}
+              binding={unitTest.values[element.valueId] || {}}
+              {...element}
+            />
+          )
+        })
         }
       </Group>
     )
   }
-}
-
-MainBrick.propTypes = {
-  componentName: PropTypes.string.isRequired,
-  handleClick: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
-  inner: PropTypes.arrayOf(
-    PropTypes.shape({
-      componentName: PropTypes.string.isRequired,
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string,
-      position: PositionPropTypes,
-      value: PropTypes.any
-    })
-  ).isRequired,
-  selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
-  size: SizePropTypes.isRequired,
-  testInputs: PropTypes.arrayOf(PropTypes.object).isRequired,
-  testOutputs: PropTypes.arrayOf(PropTypes.object).isRequired,
-  unitTest: PropTypes.object.isRequired,
-  workspaceIndex: PropTypes.number.isRequired
-}
+})
 
 export default composeBrick(MainBrick)
