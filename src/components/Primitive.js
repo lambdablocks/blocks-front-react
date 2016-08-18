@@ -8,20 +8,24 @@ import { BindingPropTypes, PositionPropTypes } from '../propTypes'
 import Ellipse from './Ellipse'
 import Slot from './Slot'
 
-class Primitive extends Component {
-  constructor(props) {
-    super(props)
-
-    this.startDrag = this.startDrag.bind(this)
-  }
-
+const Primitive = React.createClass({
   startDrag(mouseEvent) {
     const { handleMouseDown, id, position } = this.props
 
     handleMouseDown(id, mouseEvent, position)
-  }
+  },
 
-  render() {
+  propTypes: {
+    componentName: PropTypes.string.isRequired,
+    binding: BindingPropTypes.isRequired,
+    id: PropTypes.number.isRequired,
+    handleMouseDown: PropTypes.func.isRequired,
+    position: PositionPropTypes.isRequired,
+    selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
+    selectSlot: PropTypes.func.isRequired
+  },
+
+  render () {
     const {
       componentName,
       binding,
@@ -69,18 +73,6 @@ class Primitive extends Component {
       </Group>
     )
   }
-}
-
-Primitive.propTypes = {
-  componentName: PropTypes.string.isRequired,
-  binding: BindingPropTypes.isRequired,
-  id: PropTypes.number.isRequired,
-  handleMouseDown: PropTypes.func.isRequired,
-  position: PositionPropTypes.isRequired,
-  selectedSlots: PropTypes.arrayOf(PropTypes.number).isRequired,
-  selectSlot: PropTypes.func.isRequired
-}
-
-Primitive.displayName = Primitive.name
+})
 
 export default Primitive

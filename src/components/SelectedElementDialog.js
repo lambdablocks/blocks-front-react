@@ -9,8 +9,25 @@ import {
   PrimitivePropTypes
 } from '../propTypes'
 
-export default class SelectedElementDialog extends Component {
-  render() {
+const SelectedElementDialog = React.createClass({
+  propTypes: {
+    addUnitTest: PropTypes.func.isRequired,
+    changePrimitiveValue: PropTypes.func.isRequired,
+    changeTestNodeType: PropTypes.func.isRequired,
+    changeTestNodeValue: PropTypes.func.isRequired,
+    closeDialog: PropTypes.func.isRequired,
+    componentName: PropTypes.string.isRequired,
+    deleteElement: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired,
+    mousePosition: PositionPropTypes.isRequired,
+    primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,
+    value: PropTypes.string,
+    totalUnitTests: PropTypes.number.isRequired,
+    type: PropTypes.string,
+    workspaceIndex: PropTypes.number
+  },
+
+  render () {
     const {
       closeDialog,
       componentName,
@@ -40,21 +57,6 @@ export default class SelectedElementDialog extends Component {
       </div>
     )
   }
-}
+})
 
-SelectedElementDialog.propTypes = {
-  addUnitTest: PropTypes.func.isRequired,
-  changePrimitiveValue: PropTypes.func.isRequired,
-  changeTestNodeType: PropTypes.func.isRequired,
-  changeTestNodeValue: PropTypes.func.isRequired,
-  closeDialog: PropTypes.func.isRequired,
-  componentName: PropTypes.string.isRequired,
-  deleteElement: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
-  mousePosition: PositionPropTypes.isRequired,
-  primitives: PropTypes.objectOf(PrimitivePropTypes).isRequired,
-  value: PropTypes.string,
-  totalUnitTests: PropTypes.number.isRequired,
-  type: PropTypes.string,
-  workspaceIndex: PropTypes.number
-}
+export default SelectedElementDialog
